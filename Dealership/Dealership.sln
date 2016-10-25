@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MongoDb", "Dealership.MongoDb\Dealership.MongoDb.csproj", "{00006437-1084-44A0-957E-14ECB503DF19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Common", "Dealership.Common\Dealership.Common.csproj", "{B58E0ED5-49D4-4EEE-8C08-252D4C666C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.ConsoleClient", "Dealership.ConsoleClient\Dealership.ConsoleClient.csproj", "{3DC8CFC2-8F47-47FC-9544-806651E8FC47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Data", "Dealership.Data\Dealership.Data.csproj", "{9E65AEEE-5F94-418E-8F97-05FD08796DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Models", "Dealership.Models\Dealership.Models.csproj", "{2732639C-1A0A-4DF3-9793-F5E21A1A5162}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00006437-1084-44A0-957E-14ECB503DF19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00006437-1084-44A0-957E-14ECB503DF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00006437-1084-44A0-957E-14ECB503DF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00006437-1084-44A0-957E-14ECB503DF19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58E0ED5-49D4-4EEE-8C08-252D4C666C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58E0ED5-49D4-4EEE-8C08-252D4C666C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58E0ED5-49D4-4EEE-8C08-252D4C666C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58E0ED5-49D4-4EEE-8C08-252D4C666C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DC8CFC2-8F47-47FC-9544-806651E8FC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DC8CFC2-8F47-47FC-9544-806651E8FC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DC8CFC2-8F47-47FC-9544-806651E8FC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DC8CFC2-8F47-47FC-9544-806651E8FC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E65AEEE-5F94-418E-8F97-05FD08796DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E65AEEE-5F94-418E-8F97-05FD08796DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E65AEEE-5F94-418E-8F97-05FD08796DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E65AEEE-5F94-418E-8F97-05FD08796DA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2732639C-1A0A-4DF3-9793-F5E21A1A5162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2732639C-1A0A-4DF3-9793-F5E21A1A5162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2732639C-1A0A-4DF3-9793-F5E21A1A5162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2732639C-1A0A-4DF3-9793-F5E21A1A5162}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

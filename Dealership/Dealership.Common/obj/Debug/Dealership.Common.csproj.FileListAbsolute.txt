@@ -1,0 +1,10 @@
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\EntityFramework.dll
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\EntityFramework.xml
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\obj\Debug\Dealership.Common.csprojResolveAssemblyReference.cache
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\Dealership.Common.dll.config
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\Dealership.Common.dll
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\bin\Debug\Dealership.Common.pdb
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\obj\Debug\Dealership.Common.dll
+C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Common\obj\Debug\Dealership.Common.pdb

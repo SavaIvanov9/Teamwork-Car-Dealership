@@ -1,0 +1,10 @@
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\CarFactory.Common.dll
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\CarFactory.Common.pdb
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\obj\Debug\CarFactory.Common.csprojResolveAssemblyReference.cache
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\obj\Debug\CarFactory.Common.dll
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\obj\Debug\CarFactory.Common.pdb
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\CarFactory.Common.dll.config
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\EntityFramework.dll
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\EntityFramework.xml
+C:\Users\gvelikov\Desktop\Teamwork-Car-Factory\CarFactory\CarFactory.Common\bin\Debug\EntityFramework.SqlServer.xml
