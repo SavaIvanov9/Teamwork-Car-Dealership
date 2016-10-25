@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\MongoDbSource\Battery.cs" />
+    <Compile Include="Contracts\MongoDbSource\IBattery.cs" />
     <Compile Include="Contracts\MongoDbSource\IBatteryBrand.cs" />
     <Compile Include="Contracts\MongoDbSource\IEntity.cs" />
     <Compile Include="Contracts\MongoDbSource\IFuel.cs" />

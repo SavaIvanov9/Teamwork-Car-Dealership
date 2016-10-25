@@ -27,6 +27,7 @@ namespace Dealership.ConsoleClient
             IDealershipData data = new DealershipData(dealershipDbContext);
 
             Console.WriteLine(data.Vehicles.All().Count());
+            Console.WriteLine(data.Brands.All().FirstOrDefault().Vehicles.Count);
         }
     }
 }
