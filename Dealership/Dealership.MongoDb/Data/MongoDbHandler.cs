@@ -149,13 +149,14 @@ namespace Dealership.MongoDb
         {
             foreach (var vehicle in this.vehicles)
             {
+                var model = vehicle.Model;
                 var brandId = data.Brands.FirstOrDefault(b => b.Name == vehicle.Brand).Id;
                 var fuelId = data.Fuels.FirstOrDefault(f => f.Name == vehicle.Fuel).Id;
                 var vehicleTypeId = data.VehiclesTypes.FirstOrDefault(v => v.Type == vehicle.Type).Id;
                 var year = vehicle.Year;
                 var cost = vehicle.Cost;
 
-                data.Vehicles.Add(new Vehicle(brandId, fuelId, vehicleTypeId, year, cost));
+                data.Vehicles.Add(new Vehicle(model, brandId, fuelId, vehicleTypeId, year, cost));
             }
 
             data.SaveChanges();

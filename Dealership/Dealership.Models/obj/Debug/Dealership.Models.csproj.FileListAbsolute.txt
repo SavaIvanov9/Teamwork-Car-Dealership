@@ -8,3 +8,13 @@ C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Models\bin\Debug\Deal
 C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Models\bin\Debug\Dealership.Models.pdb
 C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Models\obj\Debug\Dealership.Models.dll
 C:\Users\gvelikov\Desktop\Dealership\Dealership\Dealership.Models\obj\Debug\Dealership.Models.pdb
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\Dealership.Models.dll.config
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\Dealership.Models.dll
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\Dealership.Models.pdb
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\EntityFramework.dll
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\EntityFramework.xml
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\obj\Debug\Dealership.Models.csprojResolveAssemblyReference.cache
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\obj\Debug\Dealership.Models.dll
+C:\Users\gvelikov\Desktop\Teamwork\Teamwork-Car-Dealership\Teamwork-Car-Dealership\Dealership\Dealership.Models\obj\Debug\Dealership.Models.pdb

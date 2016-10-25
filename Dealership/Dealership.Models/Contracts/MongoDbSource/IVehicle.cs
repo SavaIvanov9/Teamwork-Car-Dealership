@@ -4,6 +4,7 @@ namespace Dealership.Models.Contracts.MongoDbSource
 {
     public interface IVehicle : IEntity
     {
+        string Model { get; set; }
         int BrandId { get; set; }
 
         Brand Brand { get; set; }

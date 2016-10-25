@@ -12,8 +12,9 @@ namespace Dealership.Models.Models.MongoDbSource
 
         }
 
-        public Vehicle(int brandId, int fuelId, int vehicleTypeId, int year, decimal cost)
+        public Vehicle(string model, int brandId, int fuelId, int vehicleTypeId, int year, decimal cost)
         {
+            this.Model = model;
             this.BrandId = brandId;
             this.FuelId = fuelId;
             this.VehicleTypeId = vehicleTypeId;
@@ -22,6 +23,8 @@ namespace Dealership.Models.Models.MongoDbSource
         }
 
         public int Id { get; set; }
+
+        public string Model { get; set; }
 
         public int VehicleTypeId { get; set; }
 
