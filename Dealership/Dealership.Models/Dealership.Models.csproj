@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\MongoDbSource\IBattery.cs" />
     <Compile Include="Contracts\MongoDbSource\IBatteryBrand.cs" />
     <Compile Include="Contracts\MongoDbSource\IEntity.cs" />
     <Compile Include="Contracts\MongoDbSource\IFuel.cs" />
@@ -62,6 +61,7 @@
     <Compile Include="Models\MongoDbSource\BatteryBrand.cs" />
     <Compile Include="Models\MongoDbSource\Brand.cs" />
     <Compile Include="Contracts\MongoDbSource\IBrand.cs" />
+    <Compile Include="Contracts\MongoDbSource\IBattery.cs" />
     <Compile Include="Models\MongoDbSource\Tire.cs" />
     <Compile Include="Models\MongoDbSource\TireBrand.cs" />
     <Compile Include="Models\MongoDbSource\TireType.cs" />
