@@ -25,6 +25,7 @@ namespace Dealership.MongoDb
             this.connectionString = connectionString;
             this.databaseName = databaseName;
         }
+
         public bool IsDataSeeded(IDealershipDbContext data)
         {
             return data.Vehicles.Any();
@@ -96,7 +97,7 @@ namespace Dealership.MongoDb
             {
                 var type = vehicle.Type;
 
-                if (data.VehiclesTypes  .Local.All(f => f.Type != type))
+                if (data.VehiclesTypes.Local.All(f => f.Type != type))
                 {
                     var vehicleType = new VehicleType(vehicle.Type);
                     data.VehiclesTypes.Add(vehicleType);
