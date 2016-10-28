@@ -57,6 +57,12 @@
     <Compile Include="Contracts\MongoDbSource\ITireTyre.cs" />
     <Compile Include="Contracts\MongoDbSource\IVehicle.cs" />
     <Compile Include="Contracts\MongoDbSource\IVehicleType.cs" />
+    <Compile Include="Contracts\XmlSource\IAddress.cs" />
+    <Compile Include="Contracts\XmlSource\ICity.cs" />
+    <Compile Include="Contracts\XmlSource\ICountry.cs" />
+    <Compile Include="Contracts\XmlSource\IEmployee.cs" />
+    <Compile Include="Contracts\XmlSource\IPosition.cs" />
+    <Compile Include="Contracts\XmlSource\IShop.cs" />
     <Compile Include="Models\MongoDbSource\Battery.cs" />
     <Compile Include="Models\MongoDbSource\BatteryBrand.cs" />
     <Compile Include="Models\MongoDbSource\Brand.cs" />
@@ -73,6 +79,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\XmlSource\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

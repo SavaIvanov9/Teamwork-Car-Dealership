@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MongoDb", "Dealership.MongoDb\Dealership.MongoDb.csproj", "{00006437-1084-44A0-957E-14ECB503DF19}"
 EndProject
@@ -16,6 +16,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.ExcelFilesProcessing", "Dealership.ExcelFilesProcessing\Dealership.ExcelFilesProcessing.csproj", "{62207070-DE20-4BBB-9F3C-FD3CD82C3EB9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Reports.Models", "Dealership.Reports.Models\Dealership.Reports.Models.csproj", "{D77C6761-58BF-416E-9064-4DE2AA6FFE5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.XmlFilesProcessing", "Dealership.XmlFilesProcessing\Dealership.XmlFilesProcessing.csproj", "{53DD272D-D0D0-4845-AFDE-80D2BC6B2C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.DataSeed", "Dealership.DataSeed\Dealership.DataSeed.csproj", "{08129128-3DF8-4940-9B88-9F464F3455DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{D77C6761-58BF-416E-9064-4DE2AA6FFE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D77C6761-58BF-416E-9064-4DE2AA6FFE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D77C6761-58BF-416E-9064-4DE2AA6FFE5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DD272D-D0D0-4845-AFDE-80D2BC6B2C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DD272D-D0D0-4845-AFDE-80D2BC6B2C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DD272D-D0D0-4845-AFDE-80D2BC6B2C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DD272D-D0D0-4845-AFDE-80D2BC6B2C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08129128-3DF8-4940-9B88-9F464F3455DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08129128-3DF8-4940-9B88-9F464F3455DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08129128-3DF8-4940-9B88-9F464F3455DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08129128-3DF8-4940-9B88-9F464F3455DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

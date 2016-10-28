@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Employees>
+    <Employee>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Phone>01-114-57893</Phone>
+        <Pid>7402224250</Pid>
+        <Shop>
+            <Name>South Pro Automotive</Name>
+            <Address>
+                <Street>Horton Rd</Street>
+                <ZipCode>9222</ZipCode>
+                <City>Calgary</City>
+                <Country>USA</Country>
+            </Address>
+        </Shop>
+        <HireDate>08-11-2015</HireDate>
+        <Salary>55000</Salary>
+        <Position>Consultant</Position>
+        <Address>
+            <Street>1A St</Street>
+            <ZipCode>9222</ZipCode>
+            <City>Calgary</City>
+            <Country>USA</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>John</FirstName>
+        <LastName>Smith</LastName>
+        <Phone>01-114-80023</Phone>
+        <Pid>4610051787</Pid>
+        <Shop>
+            <Name>South Pro Automotive</Name>
+            <Address>
+                <Street>Horton Rd</Street>
+                <ZipCode>9222</ZipCode>
+                <City>Calgary</City>
+                <Country>USA</Country>
+            </Address>
+        </Shop>
+        <HireDate>07-01-2014</HireDate>
+        <Salary>60000</Salary>
+        <Position>Manager</Position>
+        <Address>
+            <Street>Meridian Rd</Street>
+            <ZipCode>1232</ZipCode>
+            <City>Boston</City>
+            <Country>USA</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Sarah</FirstName>
+        <LastName>Brighton</LastName>
+        <Phone>01-114-70023</Phone>
+        <Pid>8502083138</Pid>
+        <Shop>
+            <Name>South Pro Automotive</Name>
+            <Address>
+                <Street>Horton Rd</Street>
+                <ZipCode>9222</ZipCode>
+                <City>Calgary</City>
+                <Country>USA</Country>
+            </Address>
+        </Shop>
+        <HireDate>07-02-2013</HireDate>
+        <Salary>50000</Salary>
+        <Position>Consultant</Position>
+        <Address>
+            <Street>35 Ave</Street>
+            <ZipCode>2321</ZipCode>
+            <City>New York</City>
+            <Country>USA</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Sarah</FirstName>
+        <LastName>Brighton</LastName>
+        <Phone>02-115-70023</Phone>
+        <Pid>7502083128</Pid>
+        <Shop>
+            <Name>Brunswick Auto</Name>
+            <Address>
+                <Street>Lewisville Rd</Street>
+                <ZipCode>8222</ZipCode>
+                <City>London</City>
+                <Country>England</Country>
+            </Address>
+        </Shop>
+        <HireDate>07-02-2014</HireDate>
+        <Salary>35000</Salary>
+        <Position>Accountant</Position>
+        <Address>
+            <Street>Elmwood Dr</Street>
+            <ZipCode>4322</ZipCode>
+            <City>London</City>
+            <Country>England</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>William</FirstName>
+        <LastName>Johnson</LastName>
+        <Phone>02-115-71023</Phone>
+        <Pid>0544037725</Pid>
+        <Shop>
+            <Name>Brunswick Auto</Name>
+            <Address>
+                <Street>Lewisville Rd</Street>
+                <ZipCode>8222</ZipCode>
+                <City>London</City>
+                <Country>England</Country>
+            </Address>
+        </Shop>
+        <HireDate>07-02-2014</HireDate>
+        <Salary>55000</Salary>
+        <Position>Consultant</Position>
+        <Address>
+            <Street>Frontenac Dr</Street>
+            <ZipCode>5222</ZipCode>
+            <City>Leeds</City>
+            <Country>England</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Jessica</FirstName>
+        <LastName>Sandars</LastName>
+        <Phone>02-115-71323</Phone>
+        <Pid>7505257040</Pid>
+        <Shop>
+            <Name>Brunswick Auto</Name>
+            <Address>
+                <Street>Lewisville Rd</Street>
+                <ZipCode>8222</ZipCode>
+                <City>London</City>
+                <Country>England</Country>
+            </Address>
+        </Shop>
+        <HireDate>10-04-2013</HireDate>
+        <Salary>60000</Salary>
+        <Position>Engineer</Position>
+        <Address>
+            <Street>Caledonia Rd</Street>
+            <ZipCode>4222</ZipCode>
+            <City>Leeds</City>
+            <Country>England</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Barbara</FirstName>
+        <LastName>White</LastName>
+        <Phone>02-115-88323</Phone>
+        <Pid>4909301788</Pid>
+        <Shop>
+            <Name>Brunswick Auto</Name>
+            <Address>
+                <Street>Lewisville Rd</Street>
+                <ZipCode>8222</ZipCode>
+                <City>London</City>
+                <Country>England</Country>
+            </Address>
+        </Shop>
+        <HireDate>10-05-2014</HireDate>
+        <Salary>40000</Salary>
+        <Position>Consultant</Position>
+        <Address>
+            <Street>MacNaughton Ave</Street>
+            <ZipCode>4222</ZipCode>
+            <City>London</City>
+            <Country>England</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Jim</FirstName>
+        <LastName>Walker</LastName>
+        <Phone>03-115-09323</Phone>
+        <Pid>7110092443</Pid>
+        <Shop>
+        </Shop>
+            <Name>North East Auto</Name>
+            <Address>
+                <Street>Sackville Dr</Street>
+                <ZipCode>2222</ZipCode>
+                <City>Sydney</City>
+                <Country>Australia</Country>
+            </Address>
+        <HireDate>10-04-2015</HireDate>
+        <Salary>57000</Salary>
+        <Position>Manager</Position>
+        <Address>
+            <Street>Kempt Rd</Street>
+            <ZipCode>2222</ZipCode>
+            <City>Sydney</City>
+            <Country>Australia</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Bob</FirstName>
+        <LastName>Stevens</LastName>
+        <Phone>03-115-09323</Phone>
+        <Pid>5501240282</Pid>
+        <Shop>
+            <Name>North East Auto</Name>
+            <Address>
+                <Street>Sackville Dr</Street>
+                <ZipCode>2222</ZipCode>
+                <City>Sydney</City>
+                <Country>Australia</Country>
+            </Address>
+        </Shop>
+        <HireDate>10-04-2015</HireDate>
+        <Salary>47000</Salary>
+        <Position>Manager</Position>
+        <Address>
+            <Street>Bluewater Rd</Street>
+            <ZipCode>2322</ZipCode>
+            <City>Canberra</City>
+            <Country>Australia</Country>
+        </Address>
+    </Employee>
+    <Employee>
+        <FirstName>Michel</FirstName>
+        <LastName>Stevens</LastName>
+        <Phone>03-115-02323</Phone>
+        <Pid>9005075333</Pid>
+        <Shop>
+            <Name>North East Auto</Name>
+            <Address>
+                <Street>Sackville Dr</Street>
+                <ZipCode>2222</ZipCode>
+                <City>Sydney</City>
+                <Country>Australia</Country>
+            </Address>
+        </Shop>
+        <HireDate>10-04-2016</HireDate>
+        <Salary>30000</Salary>
+        <Position>Consultant</Position>
+        <Address>
+            <Street>Damascus Road</Street>
+            <ZipCode>2322</ZipCode>
+            <City>Canberra</City>
+            <Country>Australia</Country>
+        </Address>
+    </Employee>
+</Employees>

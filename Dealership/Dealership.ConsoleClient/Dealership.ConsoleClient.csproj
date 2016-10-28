@@ -76,6 +76,10 @@
       <Project>{b58e0ed5-49d4-4eee-8c08-252d4c666c03}</Project>
       <Name>Dealership.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dealership.DataSeed\Dealership.DataSeed.csproj">
+      <Project>{08129128-3df8-4940-9b88-9f464f3455da}</Project>
+      <Name>Dealership.DataSeed</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dealership.Data\Dealership.Data.csproj">
       <Project>{9e65aeee-5f94-418e-8f97-05fd08796da7}</Project>
       <Name>Dealership.Data</Name>
@@ -87,6 +91,10 @@
     <ProjectReference Include="..\Dealership.MongoDb\Dealership.MongoDb.csproj">
       <Project>{00006437-1084-44a0-957e-14ecb503df19}</Project>
       <Name>Dealership.MongoDb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.XmlFilesProcessing\Dealership.XmlFilesProcessing.csproj">
+      <Project>{53dd272d-d0d0-4845-afde-80d2bc6b2c44}</Project>
+      <Name>Dealership.XmlFilesProcessing</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
