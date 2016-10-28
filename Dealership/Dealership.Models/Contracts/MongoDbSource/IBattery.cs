@@ -2,7 +2,7 @@
 
 namespace Dealership.Models.Contracts.MongoDbSource
 {
-    public interface IBattery
+    public interface IBattery : IEntity
     {
         int AmperHours { get; set; }
 
@@ -11,7 +11,5 @@ namespace Dealership.Models.Contracts.MongoDbSource
         int BatteryBrandId { get; set; }
 
         decimal Cost { get; set; }
-
-        int Id { get; set; }
     }
 }

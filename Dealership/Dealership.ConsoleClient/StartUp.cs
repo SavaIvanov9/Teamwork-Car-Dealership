@@ -3,7 +3,6 @@ using System.Linq;
 
 using Dealership.Common;
 using Dealership.Data;
-using Dealership.Data.Contracts;
 using Dealership.MongoDb;
 
 namespace Dealership.ConsoleClient
