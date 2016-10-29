@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -9,9 +10,17 @@ namespace Dealership.Data.Contracts
     {
         IQueryable<T> All();
 
+        bool All(Func<T, bool> condition);
+
+        ObservableCollection<T> Local { get; }
+
         IQueryable<T> Search(Expression<Func<T, bool>> condition);
 
         T GetById(int id);
+
+        T FirstOrDefault(Expression<Func<T, bool>> condition);
+
+        bool Any();
 
         void Add(T entity);
 

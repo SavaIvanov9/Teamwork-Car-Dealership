@@ -5,6 +5,8 @@ using Dealership.Common;
 using Dealership.Data;
 using Dealership.MongoDb;
 using Dealership.XmlFilesProcessing.Readers;
+using Dealership.Data.Seeders;
+using Dealership.DataSeed.Seeders;
 
 namespace Dealership.ConsoleClient
 {
@@ -38,14 +40,15 @@ namespace Dealership.ConsoleClient
 
         private static void SeedDataFromXml()
         {
-            var xmlDataReader = new XmlEmployeeReader();
+            var xmlEmployeeReader = new XmlEmployeeReader();
 
-            var employees = xmlDataReader.ReadEmployees();
+            var dbContext = new DealershipDbContext();
+            var data = new DealershipData(dbContext);
+            var employeeSeeder = new EmployeeSeeder(data);
 
-            foreach (var employee in employees)
-            {
-                Console.WriteLine(employee.FirstName);
-            }
+            var employeeSeedUtil = new EmployeeSeedUtil(xmlEmployeeReader, employeeSeeder);
+
+            employeeSeedUtil.Seed();
         }
     }
 }

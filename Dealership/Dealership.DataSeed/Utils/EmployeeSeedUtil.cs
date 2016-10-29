@@ -16,9 +16,13 @@ namespace Dealership.DataSeed.Seeders
 
         public void Seed()
         {
-            var employees = this.employeeReader.ReadEmployees();
+            var isDataSeeded = employeeSeeder.IsDataSeeded();
+            if (!isDataSeeded)
+            {
+                var employees = this.employeeReader.ReadEmployees();
 
-            this.employeeSeeder.SeedEmployees(employees);
+                this.employeeSeeder.Seed(employees);
+            }
         }
     }
 }

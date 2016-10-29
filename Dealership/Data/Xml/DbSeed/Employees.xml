@@ -174,7 +174,6 @@
         <Phone>03-115-09323</Phone>
         <Pid>7110092443</Pid>
         <Shop>
-        </Shop>
             <Name>North East Auto</Name>
             <Address>
                 <Street>Sackville Dr</Street>
@@ -182,6 +181,7 @@
                 <City>Sydney</City>
                 <Country>Australia</Country>
             </Address>
+        </Shop>
         <HireDate>10-04-2015</HireDate>
         <Salary>57000</Salary>
         <Position>Manager</Position>

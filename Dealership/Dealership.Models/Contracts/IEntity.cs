@@ -1,4 +1,4 @@
-﻿namespace Dealership.Models.Contracts.MongoDbSource
+﻿namespace Dealership.Models.Contracts
 {
     public interface IEntity
     {

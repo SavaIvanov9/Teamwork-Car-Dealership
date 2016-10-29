@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\MongoDbSource\IBatteryBrand.cs" />
-    <Compile Include="Contracts\MongoDbSource\IEntity.cs" />
+    <Compile Include="Contracts\IEntity.cs" />
     <Compile Include="Contracts\MongoDbSource\IFuel.cs" />
     <Compile Include="Contracts\MongoDbSource\ITire.cs" />
     <Compile Include="Contracts\MongoDbSource\ITireBrand.cs" />
@@ -74,15 +74,19 @@
     <Compile Include="Models\MongoDbSource\Vehicle.cs" />
     <Compile Include="Models\MongoDbSource\Fuel.cs" />
     <Compile Include="Models\MongoDbSource\VehicleType.cs" />
+    <Compile Include="Models\XmlSource\Address.cs" />
+    <Compile Include="Models\XmlSource\City.cs" />
+    <Compile Include="Models\XmlSource\Country.cs" />
+    <Compile Include="Models\XmlSource\Employee.cs" />
+    <Compile Include="Models\XmlSource\Position.cs" />
+    <Compile Include="Models\XmlSource\Shop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\XmlSource\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

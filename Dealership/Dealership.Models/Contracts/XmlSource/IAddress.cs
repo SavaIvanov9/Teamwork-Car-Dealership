@@ -5,9 +5,5 @@
         string Street { get; }
 
         string ZipCode { get; }
-
-        ICity City { get; }
-
-        ICountry Country { get; }
     }
 }

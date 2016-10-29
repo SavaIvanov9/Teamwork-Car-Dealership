@@ -49,10 +49,6 @@
       <Project>{08129128-3df8-4940-9b88-9f464f3455da}</Project>
       <Name>Dealership.DataSeed</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dealership.Models\Dealership.Models.csproj">
-      <Project>{2732639c-1a0a-4df3-9793-f5e21a1a5162}</Project>
-      <Name>Dealership.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

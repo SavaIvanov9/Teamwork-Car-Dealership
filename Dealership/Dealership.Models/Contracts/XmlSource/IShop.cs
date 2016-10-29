@@ -3,7 +3,5 @@
     public interface IShop
     {
         string Name { get; }
-
-        IAddress Address { get; }
     }
 }

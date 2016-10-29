@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,7 +10,7 @@ namespace Dealership.Data
 {
     public class DealershipRepository<T> : IDealershipRepository<T> where T : class
     {
-        
+
         public DealershipRepository(IDealershipDbContext context)
         {
             if (context == null)
@@ -25,9 +26,23 @@ namespace Dealership.Data
 
         protected IDealershipDbContext Context { get; set; }
 
+        public ObservableCollection<T> Local
+        {
+            get
+            {
+                return this.DbSet.Local;
+            }
+        }
+
         public IQueryable<T> All()
         {
             return this.DbSet.AsQueryable();
+        }
+
+        public bool All(Func<T, bool> condition)
+        {
+            var local = this.DbSet.Local;
+            return local.All(condition);
         }
 
         public IQueryable<T> Search(Expression<Func<T, bool>> condition)
@@ -79,6 +94,16 @@ namespace Dealership.Data
         {
             var entry = this.Context.Entry(entity);
             entry.State = newEntityState;
+        }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> condition)
+        {
+            return this.DbSet.FirstOrDefault(condition);
+        }
+
+        public bool Any()
+        {
+            return this.DbSet.Any();
         }
     }
 }

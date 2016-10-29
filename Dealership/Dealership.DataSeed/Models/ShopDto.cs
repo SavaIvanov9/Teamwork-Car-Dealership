@@ -4,7 +4,7 @@ namespace Dealership.DataSeed.Models
 {
     public class ShopDto : IShop
     {
-        public IAddress Address { get; set; }
+        public AddressDto Address { get; set; }
 
         public string Name { get; set; }
     }

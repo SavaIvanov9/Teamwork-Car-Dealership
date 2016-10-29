@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dealership.Models.Contracts.XmlSource
 {
@@ -19,11 +15,5 @@ namespace Dealership.Models.Contracts.XmlSource
         DateTime HireDate { get; }
 
         int Salary { get; }
-
-        IPosition Position { get; }
-
-        IShop Shop { get; }
-
-        IAddress Address { get; }
     }
 }

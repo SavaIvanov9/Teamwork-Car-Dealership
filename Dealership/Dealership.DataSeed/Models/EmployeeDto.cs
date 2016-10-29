@@ -5,7 +5,7 @@ namespace Dealership.DataSeed.Models
 {
     public class EmployeeDto : IEmployee
     {
-        public IAddress Address { get; set; }
+        public AddressDto Address { get; set; }
 
         public string FirstName { get; set; }
 
@@ -17,10 +17,10 @@ namespace Dealership.DataSeed.Models
 
         public string Pid { get; set; }
 
-        public IPosition Position { get; set; }
+        public PositionDto Position { get; set; }
 
         public int Salary { get; set; }
 
-        public IShop Shop { get; set; }
+        public ShopDto Shop { get; set; }
     }
 }

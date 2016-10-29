@@ -1,8 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 using Dealership.Data.Contracts;
 using Dealership.Data.Migrations;
 using Dealership.Models.Models.MongoDbSource;
+using Dealership.Models.Models.XmlSource;
 
 namespace Dealership.Data
 {
@@ -32,6 +34,18 @@ namespace Dealership.Data
 
         public virtual IDbSet<BatteryBrand> BatteryBrands { get; set; }
 
+        public IDbSet<Address> Addresses { get; set; }
+
+        public IDbSet<City> Cities { get; set; }
+
+        public IDbSet<Country> Countries { get; set; }
+
+        public IDbSet<Employee> Employees { get; set; }
+
+        public IDbSet<Position> Positions { get; set; }
+
+        public IDbSet<Shop> Shops { get; set; }
+
         public new IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();
@@ -45,6 +59,12 @@ namespace Dealership.Data
         public new void Dispose()
         {
             base.Dispose();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Shop>().HasRequired(sh => sh.Address).WithMany().WillCascadeOnDelete(false);
         }
     }
 }

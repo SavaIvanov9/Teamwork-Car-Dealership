@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 
 using Dealership.Models.Models.MongoDbSource;
+using Dealership.Models.Models.XmlSource;
 
 namespace Dealership.Data.Contracts
 {
@@ -24,5 +25,16 @@ namespace Dealership.Data.Contracts
 
         IDbSet<BatteryBrand> BatteryBrands { get; set; }
 
+        IDbSet<Address> Addresses { get; set; }
+
+        IDbSet<City> Cities { get; set; }
+
+        IDbSet<Country> Countries { get; set; }
+
+        IDbSet<Employee> Employees { get; set; }
+
+        IDbSet<Position> Positions { get; set; }
+
+        IDbSet<Shop> Shops { get; set; }
     }
 }

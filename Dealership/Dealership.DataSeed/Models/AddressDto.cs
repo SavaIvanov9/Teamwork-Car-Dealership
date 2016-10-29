@@ -4,9 +4,9 @@ namespace Dealership.DataSeed.Models
 {
     public class AddressDto : IAddress
     {
-        public ICity City { get; set; }
+        public CityDto City { get; set; }
 
-        public ICountry Country { get; set; }
+        public CountryDto Country { get; set; }
 
         public string Street { get; set; }
 

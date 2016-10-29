@@ -5,6 +5,8 @@ namespace Dealership.DataSeed.Contracts
 {
     public interface IEmployeeSeeder
     {
-        void SeedEmployees(IEnumerable<EmployeeDto> employees);
+        void Seed(IEnumerable<EmployeeDto> employees);
+
+        bool IsDataSeeded();
     }
 }

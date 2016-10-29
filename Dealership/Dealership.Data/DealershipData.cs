@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using Dealership.Data.Contracts;
 using Dealership.Models.Models.MongoDbSource;
+using Dealership.Models.Models.XmlSource;
 
 namespace Dealership.Data
 {
@@ -87,6 +88,54 @@ namespace Dealership.Data
             get
             {
                 return this.GetRepository<Fuel>();
+            }
+        }
+
+        public IDealershipRepository<Address> Addresses
+        {
+            get
+            {
+                return this.GetRepository<Address>();
+            }
+        }
+
+        public IDealershipRepository<Employee> Employees
+        {
+            get
+            {
+                return this.GetRepository<Employee>();
+            }
+        }
+
+        public IDealershipRepository<City> Cities
+        {
+            get
+            {
+                return this.GetRepository<City>();
+            }
+        }
+
+        public IDealershipRepository<Country> Countries
+        {
+            get
+            {
+                return this.GetRepository<Country>();
+            }
+        }
+
+        public IDealershipRepository<Position> Positions
+        {
+            get
+            {
+                return this.GetRepository<Position>();
+            }
+        }
+
+        public IDealershipRepository<Shop> Shops
+        {
+            get
+            {
+                return this.GetRepository<Shop>();
             }
         }
 
