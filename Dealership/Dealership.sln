@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MongoDb", "Dealership.MongoDb\Dealership.MongoDb.csproj", "{00006437-1084-44A0-957E-14ECB503DF19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Common", "Dealership.Common\Dealership.Common.csproj", "{B58E0ED5-49D4-4EEE-8C08-252D4C666C03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.ConsoleClient", "Dealership.ConsoleClient\Dealership.ConsoleClient.csproj", "{3DC8CFC2-8F47-47FC-9544-806651E8FC47}"
+	ProjectSection(ProjectDependencies) = postProject
+		{08129128-3DF8-4940-9B88-9F464F3455DA} = {08129128-3DF8-4940-9B88-9F464F3455DA}
+		{53DD272D-D0D0-4845-AFDE-80D2BC6B2C44} = {53DD272D-D0D0-4845-AFDE-80D2BC6B2C44}
+		{D77C6761-58BF-416E-9064-4DE2AA6FFE5C} = {D77C6761-58BF-416E-9064-4DE2AA6FFE5C}
+		{62207070-DE20-4BBB-9F3C-FD3CD82C3EB9} = {62207070-DE20-4BBB-9F3C-FD3CD82C3EB9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Data", "Dealership.Data\Dealership.Data.csproj", "{9E65AEEE-5F94-418E-8F97-05FD08796DA7}"
 EndProject

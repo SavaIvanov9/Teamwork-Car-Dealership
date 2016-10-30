@@ -61,12 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IDbContext.cs" />
     <Compile Include="Contracts\IDealershipData.cs" />
     <Compile Include="Contracts\IDealershipRepository.cs" />
     <Compile Include="DealershipData.cs" />
     <Compile Include="DealershipDbContext.cs" />
     <Compile Include="Contracts\IDealershipDbContext.cs" />
-    <Compile Include="Contracts\IDbContext.cs" />
     <Compile Include="DealershipRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

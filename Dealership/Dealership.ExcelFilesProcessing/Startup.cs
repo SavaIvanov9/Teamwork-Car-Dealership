@@ -11,6 +11,9 @@ namespace Dealership.ExcelFilesProcessing
     {
         public static void Main(string[] args)
         {
+            SeedingSQLDBFromZip s = new SeedingSQLDBFromZip();
+            s.DataGenerator();
+            return;
             //SalesReportsReaderExcel excelReader = new SalesReportsReaderExcel();
             //excelReader.ReadReport(@"D:\_TELERIK\Database\TestingTeamProject\ExperimentalProject\Data\Bourgas.xls", "10-Oct-2014");
 

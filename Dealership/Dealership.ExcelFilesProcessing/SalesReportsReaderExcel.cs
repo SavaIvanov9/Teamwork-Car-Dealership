@@ -16,7 +16,6 @@ namespace Dealership.ExcelFilesProcessing
         }
         public ExcelSalesReport ReadReport(string reportPath, string reportDate)
         {
-
             ExcelSalesReport report = new ExcelSalesReport();
             report.DateOfSale = DateTime.Parse(reportDate);
             /* string LocalconnectionString = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;" +
@@ -36,7 +35,7 @@ namespace Dealership.ExcelFilesProcessing
 
                     using (var reader = dataSet.CreateDataReader())
                     {
-                        report.DistributorName = this.ReadStoreName(reader);
+                        report.DistributorName = this.ReadStoreName(reader); //TODO PARSE IT
                         //report.Location = 
                         reader.Read(); // Skip column names
                         report.Records = this.GetReportEntries(reader);
