@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -64,7 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StartUp.cs" />
+    <Compile Include="Launcher.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +88,10 @@
     <ProjectReference Include="..\Dealership.Data\Dealership.Data.csproj">
       <Project>{9e65aeee-5f94-418e-8f97-05fd08796da7}</Project>
       <Name>Dealership.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.ExcelReportGenerator\Dealership.ExcelReportGenerator.csproj">
+      <Project>{1AA18C01-4464-49CC-BE21-BABB8BBF83A9}</Project>
+      <Name>Dealership.ExcelReportGenerator</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dealership.Models\Dealership.Models.csproj">
       <Project>{2732639c-1a0a-4df3-9793-f5e21a1a5162}</Project>

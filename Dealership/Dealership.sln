@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Json", "Dealersh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.SQLite", "Dealership.SQLite\Dealership.SQLite.csproj", "{B93D50AE-478A-42FE-A75F-008FEF909070}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.ExcelReportGenerator", "Dealership.ExcelReportGenerator\Dealership.ExcelReportGenerator.csproj", "{1AA18C01-4464-49CC-BE21-BABB8BBF83A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{B93D50AE-478A-42FE-A75F-008FEF909070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B93D50AE-478A-42FE-A75F-008FEF909070}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B93D50AE-478A-42FE-A75F-008FEF909070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA18C01-4464-49CC-BE21-BABB8BBF83A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA18C01-4464-49CC-BE21-BABB8BBF83A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA18C01-4464-49CC-BE21-BABB8BBF83A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA18C01-4464-49CC-BE21-BABB8BBF83A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

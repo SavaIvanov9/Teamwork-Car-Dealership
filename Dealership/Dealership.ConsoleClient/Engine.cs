@@ -7,19 +7,40 @@ using Dealership.MongoDb;
 using Dealership.XmlFilesProcessing.Readers;
 using Dealership.Data.Seeders;
 using Dealership.DataSeed.Seeders;
+using Dealership.ExcelReportGenerator;
+using Dealership.ExcelReportGenerator.Contracts;
 
 namespace Dealership.ConsoleClient
 {
-    public class StartUp
+    public class Engine
     {
-        public static void Main()
+        private static readonly IExcelReportGenerator ExcelReportGenerator = new ReportGenerator();
+        private static Engine instance;
+
+        public static Engine Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Engine();
+                }
+
+                return instance;
+            }
+        }
+
+        public void Start()
         {
             SeedDataFromMongo();
 
             SeedDataFromXml();
+
+            //w8ing for mysql reports code...
+            //WriteFromMySqlAndSqLiteToExcel();
         }
 
-        private static void SeedDataFromMongo()
+        private void SeedDataFromMongo()
         {
             string mongoDbConnectionString = Constants.MongoDbConnectionStringLocal;
             string mongoDbDatabaseName = Constants.MongoDbDatabaseNameLocal;
@@ -38,7 +59,7 @@ namespace Dealership.ConsoleClient
             Console.WriteLine(data.Brands.All().FirstOrDefault().Vehicles.Count);
         }
 
-        private static void SeedDataFromXml()
+        private void SeedDataFromXml()
         {
             var xmlEmployeeReader = new XmlEmployeeReader();
 
@@ -49,6 +70,20 @@ namespace Dealership.ConsoleClient
             var employeeSeedUtil = new EmployeeSeedUtil(xmlEmployeeReader, employeeSeeder);
 
             employeeSeedUtil.Seed();
+        }
+
+        private void WriteFromMySqlAndSqLiteToExcel()
+        {
+            try
+            {
+                ExcelReportGenerator.GenerateExcelReport(selectedPathAndFileName.Item1, selectedPathAndFileName.Item2);
+
+                Console.WriteLine("Excel Report successfully created..");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error! Cannot create Excel report...");
+            }
         }
     }
 }
