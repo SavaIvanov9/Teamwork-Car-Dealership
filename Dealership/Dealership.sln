@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.XmlFilesProcessi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.DataSeed", "Dealership.DataSeed\Dealership.DataSeed.csproj", "{08129128-3DF8-4940-9B88-9F464F3455DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Json", "Dealership.Json\Dealership.Json.csproj", "{7E128B68-1C83-48D0-99D8-0B0A0D025014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.SQLite", "Dealership.SQLite\Dealership.SQLite.csproj", "{B93D50AE-478A-42FE-A75F-008FEF909070}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{08129128-3DF8-4940-9B88-9F464F3455DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08129128-3DF8-4940-9B88-9F464F3455DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08129128-3DF8-4940-9B88-9F464F3455DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E128B68-1C83-48D0-99D8-0B0A0D025014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E128B68-1C83-48D0-99D8-0B0A0D025014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E128B68-1C83-48D0-99D8-0B0A0D025014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E128B68-1C83-48D0-99D8-0B0A0D025014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93D50AE-478A-42FE-A75F-008FEF909070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93D50AE-478A-42FE-A75F-008FEF909070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93D50AE-478A-42FE-A75F-008FEF909070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93D50AE-478A-42FE-A75F-008FEF909070}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
