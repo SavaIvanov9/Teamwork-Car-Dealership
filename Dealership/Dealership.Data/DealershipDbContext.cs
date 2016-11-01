@@ -5,12 +5,13 @@ using Dealership.Data.Contracts;
 using Dealership.Data.Migrations;
 using Dealership.Models.Models.MongoDbSource;
 using Dealership.Models.Models.XmlSource;
+using Dealership.Models.Models.SalesReportSource;
 
 namespace Dealership.Data
 {
     public class DealershipDbContext : DbContext, IDealershipDbContext
     {
-        public DealershipDbContext() 
+        public DealershipDbContext()
             : base("DealershipDb")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DealershipDbContext, Configuration>());
@@ -45,6 +46,8 @@ namespace Dealership.Data
         public IDbSet<Position> Positions { get; set; }
 
         public IDbSet<Shop> Shops { get; set; }
+
+        public IDbSet<Sale> Sales { get; set; }
 
         public new IDbSet<T> Set<T>() where T : class
         {

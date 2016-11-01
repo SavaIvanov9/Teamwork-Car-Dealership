@@ -74,6 +74,7 @@
     <Compile Include="Models\MongoDbSource\Vehicle.cs" />
     <Compile Include="Models\MongoDbSource\Fuel.cs" />
     <Compile Include="Models\MongoDbSource\VehicleType.cs" />
+    <Compile Include="Models\SalesReportsSource\Sale.cs" />
     <Compile Include="Models\XmlSource\Address.cs" />
     <Compile Include="Models\XmlSource\City.cs" />
     <Compile Include="Models\XmlSource\Country.cs" />
