@@ -9,17 +9,7 @@ namespace Dealership.Data.Contracts
     {
         IDealershipRepository<Vehicle> Vehicles { get; }
 
-        IDealershipRepository<Tire> Tires { get; }
-
-        IDealershipRepository<Battery> Batteries { get; }
-
-        IDealershipRepository<TireType> TireTypes { get; }
-
-        IDealershipRepository<TireBrand> TireBrands { get; }
-
         IDealershipRepository<VehicleType> VehicleTypes { get; }
-
-        IDealershipRepository<BatteryBrand> BatteryBrands { get; }
 
         IDealershipRepository<Brand> Brands { get; }
 

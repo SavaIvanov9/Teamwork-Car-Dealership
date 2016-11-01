@@ -61,8 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IMongoDbBattery.cs" />
-    <Compile Include="Contracts\IMongoDbTire.cs" />
     <Compile Include="Contracts\IMongoDbVehicle.cs" />
     <Compile Include="Contracts\IMongoDbContext.cs" />
     <Compile Include="Contracts\IMongoDbEntity.cs" />
@@ -70,8 +68,6 @@
     <Compile Include="Contracts\IMongoDbRepository.cs" />
     <Compile Include="Data\MongoDbContext.cs" />
     <Compile Include="Data\MongoDbHandler.cs" />
-    <Compile Include="Models\MongoDbBattery.cs" />
-    <Compile Include="Models\MongoDbTire.cs" />
     <Compile Include="Models\MongoDbVehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MongoDbRepository.cs" />
@@ -88,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
