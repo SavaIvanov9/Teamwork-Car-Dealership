@@ -84,6 +84,10 @@
       <Project>{9e65aeee-5f94-418e-8f97-05fd08796da7}</Project>
       <Name>Dealership.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dealership.ExcelFilesProcessing\Dealership.ExcelFilesProcessing.csproj">
+      <Project>{62207070-DE20-4BBB-9F3C-FD3CD82C3EB9}</Project>
+      <Name>Dealership.ExcelFilesProcessing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dealership.Models\Dealership.Models.csproj">
       <Project>{2732639c-1a0a-4df3-9793-f5e21a1a5162}</Project>
       <Name>Dealership.Models</Name>

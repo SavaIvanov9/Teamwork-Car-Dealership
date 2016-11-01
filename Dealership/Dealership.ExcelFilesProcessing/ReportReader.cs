@@ -1,4 +1,5 @@
 ﻿using Dealership.Common;
+using Dealership.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,9 +13,13 @@ namespace Dealership.ExcelFilesProcessing
     {
         public void ParseExcelData(IEnumerable<DirectoryInfo> matchingDirectories)
         {
-            //var salesReportFactory = new SalesReportGeneratorFromExcel(this.robotsFactoryData.Stores);
             SeedingSQLDBFromZip seedingSQLDBFromZip = new SeedingSQLDBFromZip();
             var excelSaleReportReader = new SalesReportsReaderExcel(Constants.ExcelSalesReportsConnectionStringPattern);
+
+            using (var dealershipDbContext = new DealershipDbContext())
+            {
+                var result = dealershipDbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Sales]");
+            }
 
             foreach (var dir in matchingDirectories)
             {
@@ -22,12 +27,8 @@ namespace Dealership.ExcelFilesProcessing
                 {
                     var excelData = excelSaleReportReader.ReadReport(excelFile.FullName, dir.Name);
                     seedingSQLDBFromZip.SeedSalesTable(excelData);
-                    //var salesReport = salesReportFactory.CreateSalesReport(excelData, dir.Name);
-                    //this.robotsFactoryData.SalesReports.Add(salesReport);
                 }
             }
-
-            //this.robotsFactoryData.SaveChanges();
         }
     }
 }

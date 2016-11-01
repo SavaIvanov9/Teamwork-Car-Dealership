@@ -53,6 +53,7 @@
     <Compile Include="Contracts\MongoDbSource\IFuel.cs" />
     <Compile Include="Contracts\MongoDbSource\IVehicle.cs" />
     <Compile Include="Contracts\MongoDbSource\IVehicleType.cs" />
+    <Compile Include="Contracts\SalesReportSource\ISale.cs" />
     <Compile Include="Contracts\XmlSource\IAddress.cs" />
     <Compile Include="Contracts\XmlSource\ICity.cs" />
     <Compile Include="Contracts\XmlSource\ICountry.cs" />

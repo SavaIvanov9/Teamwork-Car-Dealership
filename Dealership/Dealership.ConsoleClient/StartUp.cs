@@ -7,6 +7,7 @@ using Dealership.MongoDb;
 using Dealership.XmlFilesProcessing.Readers;
 using Dealership.Data.Seeders;
 using Dealership.DataSeed.Seeders;
+using Dealership.ExcelFilesProcessing;
 
 namespace Dealership.ConsoleClient
 {
@@ -17,6 +18,8 @@ namespace Dealership.ConsoleClient
             SeedDataFromMongo();
 
             SeedDataFromXml();
+
+            SeedDataFromSalesReports();
         }
 
         private static void SeedDataFromMongo()
@@ -50,5 +53,27 @@ namespace Dealership.ConsoleClient
 
             employeeSeedUtil.Seed();
         }
+
+        private static void SeedDataFromSalesReports()
+        {
+            Console.WriteLine("Unzipping MS Excel files and loading into MS SQL database....");  //TODO USE LOGGER
+
+            ProcessZipFiles();
+
+            Console.WriteLine("Unzipping and loading completed successfully!");
+        }
+
+        private static void ProcessZipFiles()
+        {
+            SeedingSQLDBFromZip s = new SeedingSQLDBFromZip();
+
+            var processor = new ZipUnpacker();
+            processor.Unpack(Constants.PathToZipFile, Constants.PathToUnzip);
+
+            var matchingDirectories = Utility.GetDirectoriesByPattern(Constants.PathToUnzippedFiles);
+            ReportReader reportReader = new ReportReader();
+            reportReader.ParseExcelData(matchingDirectories);
+        }
+
     }
 }

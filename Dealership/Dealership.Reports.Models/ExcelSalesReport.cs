@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Dealership.Reports.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DealerShip.Models
 {
