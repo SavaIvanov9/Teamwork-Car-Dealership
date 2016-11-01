@@ -49,12 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\MongoDbSource\IBatteryBrand.cs" />
     <Compile Include="Contracts\IEntity.cs" />
     <Compile Include="Contracts\MongoDbSource\IFuel.cs" />
-    <Compile Include="Contracts\MongoDbSource\ITire.cs" />
-    <Compile Include="Contracts\MongoDbSource\ITireBrand.cs" />
-    <Compile Include="Contracts\MongoDbSource\ITireTyre.cs" />
     <Compile Include="Contracts\MongoDbSource\IVehicle.cs" />
     <Compile Include="Contracts\MongoDbSource\IVehicleType.cs" />
     <Compile Include="Contracts\XmlSource\IAddress.cs" />
@@ -63,14 +59,8 @@
     <Compile Include="Contracts\XmlSource\IEmployee.cs" />
     <Compile Include="Contracts\XmlSource\IPosition.cs" />
     <Compile Include="Contracts\XmlSource\IShop.cs" />
-    <Compile Include="Models\MongoDbSource\Battery.cs" />
-    <Compile Include="Models\MongoDbSource\BatteryBrand.cs" />
     <Compile Include="Models\MongoDbSource\Brand.cs" />
     <Compile Include="Contracts\MongoDbSource\IBrand.cs" />
-    <Compile Include="Contracts\MongoDbSource\IBattery.cs" />
-    <Compile Include="Models\MongoDbSource\Tire.cs" />
-    <Compile Include="Models\MongoDbSource\TireBrand.cs" />
-    <Compile Include="Models\MongoDbSource\TireType.cs" />
     <Compile Include="Models\MongoDbSource\Vehicle.cs" />
     <Compile Include="Models\MongoDbSource\Fuel.cs" />
     <Compile Include="Models\MongoDbSource\VehicleType.cs" />

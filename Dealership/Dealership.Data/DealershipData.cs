@@ -27,51 +27,11 @@ namespace Dealership.Data
             }
         }
 
-        public IDealershipRepository<Tire> Tires
-        {
-            get
-            {
-                return this.GetRepository<Tire>();
-            }
-        }
-
-        public IDealershipRepository<Battery> Batteries
-        {
-            get
-            {
-                return this.GetRepository<Battery>();
-            }
-        }
-
-        public IDealershipRepository<TireType> TireTypes
-        {
-            get
-            {
-                return this.GetRepository<TireType>();
-            }
-        }
-
-        public IDealershipRepository<TireBrand> TireBrands
-        {
-            get
-            {
-                return this.GetRepository<TireBrand>();
-            }
-        }
-
         public IDealershipRepository<VehicleType> VehicleTypes
         {
             get
             {
                 return this.GetRepository<VehicleType>();
-            }
-        }
-
-        public IDealershipRepository<BatteryBrand> BatteryBrands
-        {
-            get
-            {
-                return this.GetRepository<BatteryBrand>();
             }
         }
 

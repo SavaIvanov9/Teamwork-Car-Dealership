@@ -17,8 +17,6 @@ namespace Dealership.MongoDb
         private string databaseName;
 
         private IEnumerable<IMongoDbVehicle> vehicles;
-        private IEnumerable<IMongoDbTire> tires;
-        private IEnumerable<IMongoDbBattery> batteries;
 
         public MongoDbHandler(string connectionString, string databaseName)
         {
@@ -37,21 +35,14 @@ namespace Dealership.MongoDb
 
             this.LoadBrands(data);
             this.LoadFuels(data);
-            this.LoadTireTypes(data);
-            this.LoadTireBrands(data);
-            this.LoadBatteryBrands(data);
             this.LoadVehicleTypes(data);
             this.LoadVehicles(data);
-            this.LoadTires(data);
-            this.LoadBatteries(data);
         }
 
         private void LoadRepositories()
         {
             var database = this.LoadData();
             this.vehicles = new MongoDbRepository<MongoDbVehicle>(database, "Vehicles").All().ToList();
-            this.tires = new MongoDbRepository<MongoDbTire>(database, "Tires").All().ToList();
-            this.batteries = new MongoDbRepository<MongoDbBattery>(database, "Batteries").All().ToList();
         }
 
         private IMongoDbContext LoadData()
@@ -107,45 +98,6 @@ namespace Dealership.MongoDb
             data.SaveChanges();
         }
 
-        private void LoadTireTypes(IDealershipDbContext data)
-        {
-            foreach (var tire in this.tires)
-            {
-                if (data.TireTypes.Local.All(t => t.Type != tire.TireType))
-                {
-                    data.TireTypes.Add(new TireType(tire.TireType));
-                }
-            }
-
-            data.SaveChanges();
-        }
-
-        private void LoadTireBrands(IDealershipDbContext data)
-        {
-            foreach (var tire in this.tires)
-            {
-                if (data.TyreBrands.Local.All(t => t.Name != tire.Brand))
-                {
-                    data.TyreBrands.Add(new TireBrand(tire.Brand));
-                }
-            }
-
-            data.SaveChanges();
-        }
-
-        private void LoadBatteryBrands(IDealershipDbContext data)
-        {
-            foreach (var batt in this.batteries)
-            {
-                if (data.BatteryBrands.Local.All(b => b.Name != batt.Brand))
-                {
-                    data.BatteryBrands.Add(new BatteryBrand(batt.Brand));
-                }
-            }
-
-            data.SaveChanges();
-        }
-
         private void LoadVehicles(IDealershipDbContext data)
         {
             foreach (var vehicle in this.vehicles)
@@ -162,34 +114,5 @@ namespace Dealership.MongoDb
 
             data.SaveChanges();
         }
-
-        private void LoadTires(IDealershipDbContext data)
-        {
-            foreach (var tire in this.tires)
-            {
-                var tireBrandId = data.TyreBrands.FirstOrDefault(t => t.Name == tire.Brand).Id;
-                var tireTypeId = data.TireTypes.FirstOrDefault(t => t.Type == tire.TireType).Id;
-                var cost = tire.Cost;
-
-                data.Tires.Add(new Tire(tireBrandId, tireTypeId, cost));
-            }
-
-            data.SaveChanges();
-        }
-
-        private void LoadBatteries(IDealershipDbContext data)
-        {
-            foreach (var batt in this.batteries)
-            {
-                var battBrandId = data.BatteryBrands.FirstOrDefault(b => b.Name == batt.Brand).Id;
-                var ah = batt.AmperHours;
-                var cost = batt.Cost;
-
-                data.Batteries.Add(new Battery(battBrandId, ah, cost));
-            }
-
-            data.SaveChanges();
-        }
-
     }
 }

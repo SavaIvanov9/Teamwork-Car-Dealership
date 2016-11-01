@@ -17,10 +17,6 @@ namespace Dealership.Data
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DealershipDbContext, Configuration>());
         }
 
-        public virtual IDbSet<Tire> Tires { get; set; }
-
-        public virtual IDbSet<Battery> Batteries { get; set; }
-
         public virtual IDbSet<Vehicle> Vehicles { get; set; }
 
         public virtual IDbSet<Fuel> Fuels { get; set; }
@@ -28,12 +24,6 @@ namespace Dealership.Data
         public virtual IDbSet<Brand> Brands { get; set; }
 
         public virtual IDbSet<VehicleType> VehiclesTypes { get; set; }
-
-        public virtual IDbSet<TireType> TireTypes { get; set; }
-
-        public virtual IDbSet<TireBrand> TyreBrands { get; set; }
-
-        public virtual IDbSet<BatteryBrand> BatteryBrands { get; set; }
 
         public IDbSet<Address> Addresses { get; set; }
 
