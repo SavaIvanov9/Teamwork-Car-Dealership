@@ -9,15 +9,9 @@ namespace Dealership.Models.Models.MongoDbSource
     {
         private ICollection<Vehicle> vehicles;
 
-        [Obsolete("Only needed for serialization and materialization", true)]
         public VehicleType()
         {
             this.vehicles = new HashSet<Vehicle>();
-        }
-
-        public VehicleType(string name)
-        {
-            this.Type = name;
         }
 
         public int Id { get; set; }

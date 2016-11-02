@@ -31,15 +31,12 @@ namespace Dealership.MongoDb
 
         public void SeedData(IDealershipDbContext data)
         {
-            this.LoadRepositories();
+            this.GetVehicleRepositoryFromMongo();
 
-            this.LoadBrands(data);
-            this.LoadFuels(data);
-            this.LoadVehicleTypes(data);
             this.LoadVehicles(data);
         }
 
-        private void LoadRepositories()
+        private void GetVehicleRepositoryFromMongo()
         {
             var database = this.LoadData();
             this.vehicles = new MongoDbRepository<MongoDbVehicle>(database, "Vehicles").All().ToList();
@@ -50,69 +47,38 @@ namespace Dealership.MongoDb
             return new MongoDbContext(this.connectionString, this.databaseName);
         }
 
-        private void LoadBrands(IDealershipDbContext data)
-        {
-            foreach (var vehicle in this.vehicles)
-            {
-                var brandName = vehicle.Brand;
-
-                if (data.Brands.Local.All(b => b.Name != brandName))
-                {
-                    var brand = new Brand(brandName);
-                    data.Brands.Add(brand);
-                }
-            }
-
-            data.SaveChanges();
-        }
-
-        private void LoadFuels(IDealershipDbContext data)
-        {
-            foreach (var vehicle in this.vehicles)
-            {
-                var fuelName = vehicle.Fuel;
-
-                if (data.Fuels.Local.All(f => f.Name != fuelName))
-                {
-                    var fuel = new Fuel(fuelName);
-                    data.Fuels.Add(fuel);
-                }
-            }
-
-            data.SaveChanges();
-        }
-
-        private void LoadVehicleTypes(IDealershipDbContext data)
-        {
-            foreach (var vehicle in this.vehicles)
-            {
-                var type = vehicle.Type;
-
-                if (data.VehiclesTypes.Local.All(f => f.Type != type))
-                {
-                    var vehicleType = new VehicleType(vehicle.Type);
-                    data.VehiclesTypes.Add(vehicleType);
-                }
-            }
-
-            data.SaveChanges();
-        }
-
         private void LoadVehicles(IDealershipDbContext data)
         {
             foreach (var vehicle in this.vehicles)
             {
+                var brand = data.Brands.FirstOrDefault(b => b.Name == vehicle.Brand);
+                if (brand == null)
+                {
+                    brand = new Brand() { Name = vehicle.Brand };
+                }
+
+                var fuel = data.Fuels.FirstOrDefault(f => f.Name == vehicle.Fuel);
+                if (fuel == null)
+                {
+                    fuel = new Fuel() { Name = vehicle.Fuel };
+                }
+
+                var vehicleType = data.VehiclesTypes.FirstOrDefault(v => v.Type == vehicle.Type);
+                if (vehicleType == null)
+                {
+                    vehicleType = new VehicleType() { Type = vehicle.Type };
+                }
+
                 var model = vehicle.Model;
-                var brandId = data.Brands.FirstOrDefault(b => b.Name == vehicle.Brand).Id;
-                var fuelId = data.Fuels.FirstOrDefault(f => f.Name == vehicle.Fuel).Id;
-                var vehicleTypeId = data.VehiclesTypes.FirstOrDefault(v => v.Type == vehicle.Type).Id;
                 var year = vehicle.Year;
                 var cost = vehicle.Cost;
 
-                data.Vehicles.Add(new Vehicle(model, brandId, fuelId, vehicleTypeId, year, cost));
-            }
+                var dataVehicle = new Vehicle() { Model = model, Brand = brand, VehicleType = vehicleType, Fuel =  fuel, Cost = cost, Year = year };
 
-            data.SaveChanges();
+                data.Vehicles.Add(dataVehicle);
+
+                data.SaveChanges();
+            }
         }
     }
 }
