@@ -14,8 +14,8 @@ namespace Dealership.Models.Models.XmlSource
 
         public Address()
         {
-            this.Employees = new List<Employee>();
-            this.Shops = new List<Shop>();
+            this.Employees = new HashSet<Employee>();
+            this.Shops = new HashSet<Shop>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,7 +23,7 @@ namespace Dealership.Models.Models.XmlSource
 
         public int CityId { get; set; }
 
-        public City City { get; set; }
+        public virtual City City { get; set; }
 
         [Required]
         [StringLength(50)]

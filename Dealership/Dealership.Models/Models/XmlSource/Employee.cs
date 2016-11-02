@@ -17,7 +17,7 @@ namespace Dealership.Models.Models.XmlSource
 
         public int AddressId { get; set; }
 
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -80,12 +80,12 @@ namespace Dealership.Models.Models.XmlSource
 
         public int PositionId { get; set; }
 
-        public Position Position { get; set; }
+        public virtual Position Position { get; set; }
 
         public int Salary { get; set; }
 
         public int ShopId { get; set; }
 
-        public Shop Shop { get; set; }
+        public virtual Shop Shop { get; set; }
     }
 }

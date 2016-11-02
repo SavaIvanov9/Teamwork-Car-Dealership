@@ -13,7 +13,7 @@ namespace Dealership.Models.Models.XmlSource
 
         public Shop()
         {
-            this.Employees = new List<Employee>();
+            this.Employees = new HashSet<Employee>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -39,7 +39,7 @@ namespace Dealership.Models.Models.XmlSource
 
         public int AddressId { get; set; }
 
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }
     }
