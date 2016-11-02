@@ -17,15 +17,15 @@ namespace Dealership.Models.Models.MongoDbSource
 
         public int VehicleTypeId { get; set; }
 
-        public VehicleType VehicleType { get; set; }
+        public virtual VehicleType VehicleType { get; set; }
 
         public int BrandId { get; set; }
 
-        public Brand Brand { get; set; }
+        public virtual Brand Brand { get; set; }
 
         public int FuelId { get; set; }
 
-        public Fuel Fuel { get; set; }
+        public virtual Fuel Fuel { get; set; }
 
         public int Year { get; set; }
 
