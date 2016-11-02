@@ -2,7 +2,7 @@
 {
     public class Launcher
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Engine.Instance.Start();
         }

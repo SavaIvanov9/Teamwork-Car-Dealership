@@ -14,7 +14,9 @@ namespace Dealership.ConsoleClient
 {
     public class Engine
     {
-        private static readonly IExcelReportGenerator ExcelReportGenerator = new ReportGenerator();
+        private static readonly Tuple<string, string> ExcelReportFileInfo = Tuple.Create
+            (Constants.ExtractedExcelReportsPath, Constants.ExcelReportName);
+
         private static Engine instance;
 
         public static Engine Instance
@@ -37,7 +39,7 @@ namespace Dealership.ConsoleClient
             SeedDataFromXml();
 
             //w8ing for mysql reports code...
-            //WriteFromMySqlAndSqLiteToExcel();
+            GenerateExcelReportFromMySqlAndSqLite();
         }
 
         private void SeedDataFromMongo()
@@ -72,17 +74,24 @@ namespace Dealership.ConsoleClient
             employeeSeedUtil.Seed();
         }
 
-        private void WriteFromMySqlAndSqLiteToExcel()
+        private void GenerateExcelReportFromMySqlAndSqLite()
         {
+            IExcelReportGenerator excelReportGenerator = new ReportGenerator();
+
+            string reportsPath = Constants.ExtractedExcelReportsPath;
+            string excelReportName = Constants.ExcelReportName;
+
+            Utility.CreateDirectoryIfNotExists(reportsPath);
+
             try
             {
-                ExcelReportGenerator.GenerateExcelReport(selectedPathAndFileName.Item1, selectedPathAndFileName.Item2);
+                excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
 
-                Console.WriteLine("Excel Report successfully created..");
+                Console.WriteLine("Excel Report file successfully created..");
             }
             catch (Exception)
             {
-                Console.WriteLine("Error! Cannot create Excel report...");
+                Console.WriteLine("Error occured! Cannot create Excel Report file...");
             }
         }
     }
