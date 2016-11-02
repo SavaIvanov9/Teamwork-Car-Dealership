@@ -26,7 +26,7 @@ namespace Dealership.JsonReporter
                 foreach (var item in vehicles)
                 {
                     var totalQuantitySold = sales.Where(x => x.VehicleId == item.Id).Sum(x => x.Quantity) ?? 0;
-                    var totalIncome = sales.Where(x => x.VehicleId == item.Id).Sum(x => x.Price) ?? 0.00m;
+                    var totalIncome = sales.Where(x => x.VehicleId == item.Id).Sum(x => x.Price*x.Quantity) ?? 0.00m;
 
                     var jsonReportEntry = new JsonReportEntry()
                     {
