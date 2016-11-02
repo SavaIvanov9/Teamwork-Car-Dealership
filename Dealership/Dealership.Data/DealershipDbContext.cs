@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 using Dealership.Data.Contracts;
 using Dealership.Data.Migrations;
@@ -56,8 +57,10 @@ namespace Dealership.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Shop>().HasRequired(sh => sh.Address).WithMany().WillCascadeOnDelete(false);
         }
     }
 }
