@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dealership.Common;
 using Dealership.ExcelReportGenerator.Contracts;
+using Dealership.Models.Models.JsonReports;
+using Newtonsoft.Json;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 
 namespace Dealership.ExcelReportGenerator
 {
@@ -16,15 +22,15 @@ namespace Dealership.ExcelReportGenerator
         private const int TotalExpensesColumn = 6;
         private const int RevenueColumn = 7;
 
-        private readonly RobotsFactoryMySqlContext robotFactoryMysql;
-        private readonly SQLiteDbContext robotsFactorySqlite;
+        private readonly MySqlDbContext MySqlData;
+        private readonly SQLiteDbContext SqliteData;
 
         private int bodyRowPosition = 3;
 
         public ExcelSaleReportWriter()
         {
-            this.robotFactoryMysql = new RobotsFactoryMySqlContext();
-            this.robotsFactorySqlite = new SQLiteDbContext();
+            this.MySqlData = new MySqlDbContext();
+            this.SqliteData = new SQLiteDbContext();
         }
 
         public void GenerateExcelReport(string pathToSave, string excelReportName)
@@ -56,7 +62,7 @@ namespace Dealership.ExcelReportGenerator
 
         private void GenerateExcelBodyDocument(ExcelWorksheet worksheet)
         {
-            foreach (var jsonReport in this.robotFactoryMysql.JsonReports)
+            foreach (var jsonReport in this.MySqlData.JsonReports)
             {
                 var currentEntity = JsonConvert.DeserializeObject<JsonProductsReportEntry>(jsonReport.JsonContent);
                 this.bodyRowPosition++;
@@ -84,7 +90,7 @@ namespace Dealership.ExcelReportGenerator
 
         private decimal GetItemExpense(JsonProductsReportEntry currentEntity)
         {
-            var itemExpense = this.robotsFactorySqlite.Items.Where(i => i.Name == currentEntity.ProductName)
+            var itemExpense = this.SqliteData.Items.Where(i => i.Name == currentEntity.ProductName)
                 .Select(i => new
                 {
                     Expense = i.Expense
