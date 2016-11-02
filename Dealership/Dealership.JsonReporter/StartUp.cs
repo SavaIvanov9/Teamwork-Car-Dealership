@@ -15,18 +15,31 @@ namespace Dealership.JsonReporter
         {
             using (var dbContext = new DealershipDbContext())
             {
-                var employees = dbContext.Vehicles.ToList();
-                Directory.CreateDirectory("../../../Json-Reports");
-
-                foreach (var item in employees)
+                var vehicles = dbContext.Vehicles.ToList();
+                var sales = dbContext.Sales;
+                string directoryPath = "../../../Json-Reports";
+                if (!Directory.Exists(directoryPath))
                 {
-                    string jsonObj = JsonConvert.SerializeObject(item, Formatting.Indented);
+                    Directory.CreateDirectory(directoryPath);
+                }
 
-                    Console.WriteLine(item.Brand.Name);
+                foreach (var item in vehicles)
+                {
+                    var totalQuantitySold = sales.Where(x => x.VehicleId == item.Id).Sum(x => x.Quantity) ?? 0;
+                    var totalIncome = sales.Where(x => x.VehicleId == item.Id).Sum(x => x.Price) ?? 0.00m;
 
-                    //Console.WriteLine(item.FirstName + " " + item.LastName);
-                    //File.Create($"../../../Json-Reports/{item.Id}.json");
-                    //File.WriteAllText($"../../../Json-Reports/{item.Id}.json", jsonObj);
+                    var jsonReportEntry = new JsonReportEntry()
+                    {
+                        ProductId = item.Id,
+                        ProductName = item.Model,
+                        ManufacturerName = item.Brand.Name,
+                        TotalQuantitySold = totalQuantitySold,
+                        TotalIncome = totalIncome
+                    };
+
+                    string jsonObj = JsonConvert.SerializeObject(jsonReportEntry, Formatting.Indented);
+
+                    File.WriteAllText($"{directoryPath}/{item.Id}.json", jsonObj);
                 }
             }
         }
