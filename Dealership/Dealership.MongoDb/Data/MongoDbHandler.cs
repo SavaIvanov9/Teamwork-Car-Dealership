@@ -18,10 +18,14 @@ namespace Dealership.MongoDb
 
         private IEnumerable<IMongoDbVehicle> vehicles;
 
+        private IMongoDbContext database;
+
         public MongoDbHandler(string connectionString, string databaseName)
         {
             this.connectionString = connectionString;
             this.databaseName = databaseName;
+            this.database = this.LoadData(this.connectionString, this.databaseName);
+            this.vehicles = this.GetVehicleRepositoryFromMongo(this.database);
         }
 
         public bool IsDataSeeded(IDealershipDbContext data)
@@ -31,20 +35,17 @@ namespace Dealership.MongoDb
 
         public void SeedData(IDealershipDbContext data)
         {
-            this.GetVehicleRepositoryFromMongo();
-
             this.LoadVehicles(data);
         }
 
-        private void GetVehicleRepositoryFromMongo()
+        private IEnumerable<IMongoDbVehicle> GetVehicleRepositoryFromMongo(IMongoDbContext db)
         {
-            var database = this.LoadData();
-            this.vehicles = new MongoDbRepository<MongoDbVehicle>(database, "Vehicles").All().ToList();
+            return new MongoDbRepository<MongoDbVehicle>(db, "Vehicles").All().ToList();
         }
 
-        private IMongoDbContext LoadData()
+        private IMongoDbContext LoadData(string connString, string dbName)
         {
-            return new MongoDbContext(this.connectionString, this.databaseName);
+            return new MongoDbContext(connString, dbName);
         }
 
         private void LoadVehicles(IDealershipDbContext data)
