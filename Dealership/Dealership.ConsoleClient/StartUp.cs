@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 using Dealership.Common;
 using Dealership.Data;
@@ -24,6 +23,7 @@ namespace Dealership.ConsoleClient
 
         private static void SeedDataFromMongo()
         {
+            Console.WriteLine("Seeding data from Mongo...");
             string mongoDbConnectionString = Constants.MongoDbConnectionStringLocal;
             string mongoDbDatabaseName = Constants.MongoDbDatabaseNameLocal;
 
@@ -37,12 +37,12 @@ namespace Dealership.ConsoleClient
 
             var data = new DealershipData(dealershipDbContext);
 
-            Console.WriteLine(data.Vehicles.All().Count());
-            Console.WriteLine(data.Brands.All().FirstOrDefault().Vehicles.Count);
+            Console.WriteLine("Mongo data seeded successfully!");
         }
 
         private static void SeedDataFromXml()
         {
+            Console.WriteLine("Seeding data from XML...");
             var xmlEmployeeReader = new XmlEmployeeReader();
 
             var dbContext = new DealershipDbContext();
@@ -52,6 +52,7 @@ namespace Dealership.ConsoleClient
             var employeeSeedUtil = new EmployeeSeedUtil(xmlEmployeeReader, employeeSeeder);
 
             employeeSeedUtil.Seed();
+            Console.WriteLine("XML data seeded successfully!");
         }
 
         private static void SeedDataFromSalesReports()

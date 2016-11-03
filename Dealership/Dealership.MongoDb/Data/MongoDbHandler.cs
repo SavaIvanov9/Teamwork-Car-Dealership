@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 
 using Dealership.Data.Contracts;
 using Dealership.Models.Models.MongoDbSource;
@@ -12,11 +15,12 @@ namespace Dealership.MongoDb
 {
     public class MongoDbHandler : IMongoDbHandler
     {
+        private const string PathToXml = "../../../Dealership.MongoDb/XmlSource/Vehicles.xml";
         private string connectionString;
 
         private string databaseName;
 
-        private IEnumerable<IMongoDbVehicle> vehicles;
+        private IMongoDbRepository<MongoDbVehicle> vehicles;
 
         private IMongoDbContext database;
 
@@ -35,12 +39,14 @@ namespace Dealership.MongoDb
 
         public void SeedData(IDealershipDbContext data)
         {
-            this.LoadVehicles(data);
+            this.LoadVehiclesFromXml();
+
+            this.LoadVehiclesToSql(data);
         }
 
-        private IEnumerable<IMongoDbVehicle> GetVehicleRepositoryFromMongo(IMongoDbContext db)
+        private MongoDbRepository<MongoDbVehicle> GetVehicleRepositoryFromMongo(IMongoDbContext db)
         {
-            return new MongoDbRepository<MongoDbVehicle>(db, "Vehicles").All().ToList();
+            return new MongoDbRepository<MongoDbVehicle>(db, "Vehicles");
         }
 
         private IMongoDbContext LoadData(string connString, string dbName)
@@ -48,9 +54,44 @@ namespace Dealership.MongoDb
             return new MongoDbContext(connString, dbName);
         }
 
-        private void LoadVehicles(IDealershipDbContext data)
+        private IEnumerable<XmlVehicle> GetVehiclesFromXml()
         {
-            foreach (var vehicle in this.vehicles)
+            var path = PathToXml;
+            var serializer = new XmlSerializer(typeof(List<XmlVehicle>), new XmlRootAttribute("Vehicles"));
+            var reader = new FileStream(path, FileMode.Open);
+
+            var resultCollection = new List<XmlVehicle>();
+
+            using (reader)
+            {
+                resultCollection = (List<XmlVehicle>)serializer.Deserialize(reader);
+            }
+
+            return resultCollection;
+        }
+
+        private void LoadVehiclesFromXml()
+        {
+            var xmlVehicles = this.GetVehiclesFromXml();
+            foreach (var xmlVehicle in xmlVehicles)
+            {
+                var mongoDbVehicle = new MongoDbVehicle()
+                                         {
+                                            Brand = xmlVehicle.Brand,
+                                            Model = xmlVehicle.Model,
+                                            Type = xmlVehicle.Type,
+                                            Year = xmlVehicle.Year,
+                                            Cost = xmlVehicle.Cost,
+                                            Fuel = xmlVehicle.Fuel
+                                         };
+
+                this.vehicles.Add(mongoDbVehicle);
+            }
+        }
+
+        private void LoadVehiclesToSql(IDealershipDbContext data)
+        {
+            foreach (var vehicle in this.vehicles.All().ToList())
             {
                 var brand = data.Brands.FirstOrDefault(b => b.Name == vehicle.Brand);
                 if (brand == null)
