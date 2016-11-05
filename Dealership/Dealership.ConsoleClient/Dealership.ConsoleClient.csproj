@@ -116,6 +116,10 @@
       <Project>{00006437-1084-44a0-957e-14ecb503df19}</Project>
       <Name>Dealership.MongoDb</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dealership.Reports.Models\Dealership.Reports.csproj">
+      <Project>{d77c6761-58bf-416e-9064-4de2aa6ffe5c}</Project>
+      <Name>Dealership.Reports</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dealership.XmlFilesProcessing\Dealership.XmlFilesProcessing.csproj">
       <Project>{53dd272d-d0d0-4845-afde-80d2bc6b2c44}</Project>
       <Name>Dealership.XmlFilesProcessing</Name>

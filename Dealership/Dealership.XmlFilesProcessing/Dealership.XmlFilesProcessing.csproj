@@ -60,12 +60,17 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\XmlEmployeeReader.cs" />
+    <Compile Include="Writers\XmlShopReportWriter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dealership.DataSeed\Dealership.DataSeed.csproj">
       <Project>{08129128-3df8-4940-9b88-9f464f3455da}</Project>
       <Name>Dealership.DataSeed</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.Reports.Models\Dealership.Reports.csproj">
+      <Project>{d77c6761-58bf-416e-9064-4de2aa6ffe5c}</Project>
+      <Name>Dealership.Reports</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,8 @@
     {
         string ShopPlace { get; set; }
 
-        decimal TotalBudget { get; set; }
+        string Location { get; set; }
+
+        decimal? TotalBudget { get; set; }
     }
 }

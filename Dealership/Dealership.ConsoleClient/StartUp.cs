@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
 using Dealership.Common;
 using Dealership.Data;
 using Dealership.MongoDb;
@@ -7,6 +8,8 @@ using Dealership.XmlFilesProcessing.Readers;
 using Dealership.Data.Seeders;
 using Dealership.DataSeed.Seeders;
 using Dealership.ExcelFilesProcessing;
+using Dealership.Reports.Models.Contracts;
+using DealerShip.Reports.Models;
 
 namespace Dealership.ConsoleClient
 {
@@ -14,11 +17,33 @@ namespace Dealership.ConsoleClient
     {
         public static void Main()
         {
-            SeedDataFromMongo();
+            //SeedDataFromMongo();
 
-            SeedDataFromXml();
+            //SeedDataFromXml();
 
-            SeedDataFromSalesReports();
+            //SeedDataFromSalesReports();
+
+            ICollection<IXmlShopReport> report = new List<IXmlShopReport>(); 
+
+            using (var dbContext = new DealershipDbContext())
+            {
+                var shops = dbContext.Shops.ToList();
+
+                foreach (var shop in shops)
+                {
+                    var budget = dbContext.Sales.Where(s => s.ShopId == shop.Id).Sum(t => t.Price);
+
+                    IXmlShopReport entity = new XmlShopReport();
+
+                    entity.ShopPlace = shop.ToString();
+                    entity.Location = shop.Address.ToString();
+                    entity.TotalBudget = budget;
+
+                    report.Add(entity);
+                }
+            }
+
+
         }
 
         private static void SeedDataFromMongo()

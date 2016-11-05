@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IXmlShopReport.cs" />
     <Compile Include="Models\ExcelSalesReport.cs" />
     <Compile Include="Models\ExcelSalesReportEntry.cs" />
     <Compile Include="Models\XmlShopReport.cs" />
