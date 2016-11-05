@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.DataSeed", "Deal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.JsonReporter", "Dealership.JsonReporter\Dealership.JsonReporter.csproj", "{650B11CF-BFB4-45EF-B485-25EB55A706D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MySQL", "Dealership.MySQL\Dealership.MySQL.csproj", "{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{650B11CF-BFB4-45EF-B485-25EB55A706D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{650B11CF-BFB4-45EF-B485-25EB55A706D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{650B11CF-BFB4-45EF-B485-25EB55A706D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
