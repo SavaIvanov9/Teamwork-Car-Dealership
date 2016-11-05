@@ -8,7 +8,11 @@ using Dealership.XmlFilesProcessing.Readers;
 using Dealership.Data.Seeders;
 using Dealership.DataSeed.Seeders;
 using Dealership.ExcelFilesProcessing;
+using Dealership.Reports.Models;
 using Dealership.Reports.Models.Contracts;
+using Dealership.XmlFilesProcessing.Writers;
+using Dealership.XmlFilesProcessing.Writers.Common;
+using Dealership.XmlFilesProcessing.Writers.Contracts;
 using DealerShip.Reports.Models;
 
 namespace Dealership.ConsoleClient
@@ -23,26 +27,13 @@ namespace Dealership.ConsoleClient
 
             //SeedDataFromSalesReports();
 
-            ICollection<IXmlShopReport> report = new List<IXmlShopReport>(); 
+            XmlGenerator generate = new XmlGenerator();
 
-            using (var dbContext = new DealershipDbContext())
-            {
-                var shops = dbContext.Shops.ToList();
+            var dbContext = new DealershipDbContext();
+            ICollection<IXmlShopReport> reports = new List<IXmlShopReport>();
+            IXmlShopReportWriter writer = new XmlShopReportWriter();
 
-                foreach (var shop in shops)
-                {
-                    var budget = dbContext.Sales.Where(s => s.ShopId == shop.Id).Sum(t => t.Price);
-
-                    IXmlShopReport entity = new XmlShopReport();
-
-                    entity.ShopPlace = shop.ToString();
-                    entity.Location = shop.Address.ToString();
-                    entity.TotalBudget = budget;
-
-                    report.Add(entity);
-                }
-            }
-
+            generate.CreateShopReport(dbContext, reports, writer); 
 
         }
 
