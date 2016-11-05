@@ -26,15 +26,13 @@ namespace Dealership.ConsoleClient
             //SeedDataFromXml();
 
             //SeedDataFromSalesReports();
-
-            XmlGenerator generate = new XmlGenerator();
-
             var dbContext = new DealershipDbContext();
+            XmlQuery query = new XmlQuery();
             ICollection<IXmlShopReport> reports = new List<IXmlShopReport>();
-            IXmlShopReportWriter writer = new XmlShopReportWriter();
 
-            generate.CreateShopReport(dbContext, reports, writer); 
+            IXmlShopReportWriter writer = new XmlShopReportWriter(query.ShopReport(dbContext, reports));
 
+            writer.Write();
         }
 
         private static void SeedDataFromMongo()
