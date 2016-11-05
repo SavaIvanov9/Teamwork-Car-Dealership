@@ -1,9 +1,9 @@
 ﻿using Dealership.Reports.Models;
-using DealerShip.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using DealerShip.Reports.Models;
 
 namespace Dealership.ExcelFilesProcessing
 {
@@ -52,6 +52,7 @@ namespace Dealership.ExcelFilesProcessing
             ExcelSalesReport report = new ExcelSalesReport();
             report.DateOfSale = DateTime.Parse(reportDate);
             string LocalconnectionString = string.Format(this.ConnectionString, reportPath);
+
             using (OleDbConnection connection = new OleDbConnection(LocalconnectionString)) //TODO: fix coupling, maybe use factory
             {
                 connection.Open();

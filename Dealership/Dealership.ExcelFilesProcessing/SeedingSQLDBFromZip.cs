@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dealership.Reports.Models;
 using Dealership.Models.Models.XmlSource;
-using DealerShip.Models;
+using DealerShip.Reports.Models;
 
 namespace Dealership.ExcelFilesProcessing
 {
@@ -86,6 +86,5 @@ namespace Dealership.ExcelFilesProcessing
                 dealershipDbContext.SaveChanges();
             }
         }
-
     }
 }

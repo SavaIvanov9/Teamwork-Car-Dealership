@@ -12,7 +12,7 @@
         public const string PathToUnzip = "../../../Data";
         public const string PathToUnzippedFiles = "../../../Data/Sales-Reports";
 
-        public const string PathToZipFile = "../../../Sales-Reports.zip";
+        public const string PathToZipFile = "../../../../Sales-Reports.zip";
 
         //Connection constants - they should be moved to configuration files
         public const string ExcelSalesReportsConnectionStringPattern = "Provider=Microsoft.ACE.OLEDB.12.0;" +

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DealerShip.Models
+namespace DealerShip.Reports.Models
 {
     public class ExcelSalesReport
     {
