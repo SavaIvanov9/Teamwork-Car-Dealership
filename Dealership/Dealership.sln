@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MongoDb", "Dealership.MongoDb\Dealership.MongoDb.csproj", "{00006437-1084-44A0-957E-14ECB503DF19}"
 EndProject
@@ -28,6 +28,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.DataSeed", "Dealership.DataSeed\Dealership.DataSeed.csproj", "{08129128-3DF8-4940-9B88-9F464F3455DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.JsonReporter", "Dealership.JsonReporter\Dealership.JsonReporter.csproj", "{650B11CF-BFB4-45EF-B485-25EB55A706D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MySQL", "Dealership.MySQL\Dealership.MySQL.csproj", "{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.WpfClient", "..\..\..\WPF\Teamwork-Car-Dealership\Dealership\Dealership.WpfClient\Dealership.WpfClient.csproj", "{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +121,22 @@ Global
 		{650B11CF-BFB4-45EF-B485-25EB55A706D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{650B11CF-BFB4-45EF-B485-25EB55A706D6}.Release|x64.ActiveCfg = Release|x64
 		{650B11CF-BFB4-45EF-B485-25EB55A706D6}.Release|x64.Build.0 = Release|x64
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Debug|x64.Build.0 = Debug|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Release|x64.ActiveCfg = Release|Any CPU
+		{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}.Release|x64.Build.0 = Release|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Debug|x64.Build.0 = Debug|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|x64.ActiveCfg = Release|Any CPU
+		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
