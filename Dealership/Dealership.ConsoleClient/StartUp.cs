@@ -61,15 +61,29 @@ namespace Dealership.ConsoleClient
             string mongoDbConnectionString = Constants.MongoDbConnectionStringLocal;
             string mongoDbDatabaseName = Constants.MongoDbDatabaseNameLocal;
 
-            var mongoDbHandler = new MongoDbSeeder(mongoDbConnectionString, mongoDbDatabaseName);
-            var dealershipDbContext = new DealershipDbContext();
-
-            if (!mongoDbHandler.IsDataSeeded(dealershipDbContext))
+            using (var dbContext = new DealershipDbContext())
             {
-                mongoDbHandler.SeedData(dealershipDbContext);
-            }
+                var data = new DealershipData(dbContext);
 
-            var data = new DealershipData(dealershipDbContext);
+                var vehicles = new DealershipRepository<Vehicle>(dbContext);
+                var brands = new DealershipRepository<Brand>(dbContext);
+                var fuels = new DealershipRepository<Fuel>(dbContext);
+                var vehicleTypes = new DealershipRepository<VehicleType>(dbContext);
+
+                var mongoDbSeeder = new MongoDbSeeder(
+                    mongoDbConnectionString, 
+                    mongoDbDatabaseName,
+                    data,
+                    vehicles,
+                    brands,
+                    fuels,
+                    vehicleTypes
+                    );
+                if (!mongoDbSeeder.IsDataSeeded())
+                {
+                    mongoDbSeeder.SeedData();
+                }
+            }
 
             Console.WriteLine("Mongo data seeded successfully!");
         }
