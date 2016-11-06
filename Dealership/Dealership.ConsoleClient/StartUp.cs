@@ -10,7 +10,6 @@ using Dealership.DataSeed.Seeders;
 using Dealership.ExcelFilesProcessing;
 using Dealership.Reports.Models;
 using Dealership.Reports.Models.Contracts;
-using Dealership.XmlFilesProcessing.Writers;
 using Dealership.XmlFilesProcessing.Writers.Common;
 using Dealership.XmlFilesProcessing.Writers.Contracts;
 using DealerShip.Reports.Models;
@@ -26,11 +25,30 @@ namespace Dealership.ConsoleClient
             //SeedDataFromXml();
 
             //SeedDataFromSalesReports();
+
+            using (var dbContext = new DealershipDbContext())
+            {
+                var shops = dbContext.Shops.ToList();
+
+                foreach (var shop in shops)
+                {
+                    var dailySells = dbContext.Sales.Where(s => s.ShopId == shop.Id).GroupBy(s => new { s.Price, s.DateOfSale }).OrderBy(d => d.Key.DateOfSale);
+
+                    foreach (var day in dailySells)
+                    {
+                        Console.WriteLine($"{shop.Name} ===> {day.Key.DateOfSale} ====> {day.Key.Price}");
+                    }
+                }
+            }
+        }
+
+        public static void GenerateXmlReports()
+        {
             var dbContext = new DealershipDbContext();
             XmlQuery query = new XmlQuery();
             ICollection<IXmlShopReport> reports = new List<IXmlShopReport>();
 
-            IXmlShopReportWriter writer = new XmlShopReportWriter(query.ShopReport(dbContext, reports));
+            IXmlReportWriter writer = new XmlReportShopReportWriter(query.ShopReport(dbContext, reports));
 
             writer.Write();
         }

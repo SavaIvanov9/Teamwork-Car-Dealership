@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -7,26 +8,16 @@ using Dealership.XmlFilesProcessing.Writers.Contracts;
 
 namespace Dealership.XmlFilesProcessing.Writers.Common
 {
-    public class XmlShopReportWriter : IXmlShopReportWriter
+    public class XmlReportShopReportWriter : XmlReportWriter
     {
-        private const string ReportName = "/XmlShopReport.xml";
-        private readonly string Url;
-        private readonly XmlWriterSettings Settings;
         private readonly IEnumerable<IXmlShopReport> Report;
 
-        public XmlShopReportWriter(IEnumerable<IXmlShopReport> report)
+        public XmlReportShopReportWriter(IEnumerable<IXmlShopReport> report) : base()
         {
             this.Report = report;
-
-            this.Url = "../../../../Xml-Reports";
-            this.Settings = new XmlWriterSettings();
-
-            Settings.Encoding = Encoding.UTF8;
-            Settings.Indent = true;
-            Settings.IndentChars = "\t";
         }
 
-        public void Write()
+        public override void Write()
         {
             string root = "shops";
             string shop = "shop";      

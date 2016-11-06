@@ -7,7 +7,7 @@ using Dealership.Reports.Models.Contracts;
 
 namespace Dealership.XmlFilesProcessing.Writers.Contracts
 {
-    public interface IXmlShopReportWriter
+    public interface IXmlReportWriter
     {
         void Write();
     }
