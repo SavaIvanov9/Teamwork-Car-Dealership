@@ -27,6 +27,15 @@ namespace Dealership.WpfClient
             this.SeedDataFromXml();
 
             this.SeedDataFromSalesReports();
+
+            MessageBox.Show("Data successfully loaded into SQL!");
+
+            this.BtnXmlReports.Visibility = Visibility.Visible;
+        }
+
+        private void BtnXmlReportsClick(object sender, RoutedEventArgs e)
+        {
+            //Generate XML Reports
         }
 
         private void SeedDataFromMongo()
@@ -42,7 +51,7 @@ namespace Dealership.WpfClient
                 mongoDbHandler.SeedData(dealershipDbContext);
             }
 
-            MessageBox.Show("Mongo Success");
+            // MessageBox.Show("Data from MongoDb loaded successfully!");
         }
 
         private void SeedDataFromXml()
@@ -67,7 +76,7 @@ namespace Dealership.WpfClient
                 employeeSeedUtil.Seed();
             }
 
-            MessageBox.Show("XML Success");
+            // MessageBox.Show("Data from XML loaded successfully!");
         }
 
         private void SeedDataFromSalesReports()
@@ -89,7 +98,7 @@ namespace Dealership.WpfClient
                 ReportReader reportReader = new ReportReader(seedingSQLDBFromZip);
                 reportReader.ParseExcelData(matchingDirectories);
 
-                MessageBox.Show("Excell Success");
+            // MessageBox.Show("Data from Excell loaded successfully!");
             }
         }
     }
