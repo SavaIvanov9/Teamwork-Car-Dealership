@@ -21,13 +21,13 @@ namespace Dealership.ConsoleClient
     {
         public static void Main()
         {
-            //SeedDataFromMongo();
+            SeedDataFromMongo();
 
-            //SeedDataFromXml();
+            SeedDataFromXml();
 
-            //SeedDataFromSalesReports();
+            SeedDataFromSalesReports();
 
-            //GenerateXmlShopReport();
+            GenerateXmlShopReport();
 
             GenerateXmlDailyShopReport();
         }
