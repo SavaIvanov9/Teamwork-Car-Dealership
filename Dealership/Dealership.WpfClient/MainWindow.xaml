@@ -11,5 +11,6 @@
             <ImageBrush ImageSource="Images/car-background.jpg" Stretch="Uniform"/>
         </Grid.Background>
         <Button x:Name="BtnLoadSql" Content="Load SQL Data" HorizontalAlignment="Left" Margin="29,50,0,0" VerticalAlignment="Top" Width="120" Height="48" Click="BtnLoadSqlClick"/>
+        <Button x:Name="BtnXmlReports" Content="Generate XML Reports" HorizontalAlignment="Left" Margin="154,50,0,0" VerticalAlignment="Top" Width="120" Height="48" Visibility="Hidden" Click="BtnXmlReportsClick"/>
     </Grid>
 </Window>
