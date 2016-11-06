@@ -7,6 +7,9 @@ using Dealership.DataSeed.Seeders;
 using Dealership.ExcelFilesProcessing;
 using Dealership.MongoDb;
 using Dealership.XmlFilesProcessing.Readers;
+using Dealership.Models.Models.XmlSource;
+using Dealership.Models.Models.SalesReportSource;
+using Dealership.Models.Models.MongoDbSource;
 
 namespace Dealership.WpfClient
 {
@@ -33,7 +36,7 @@ namespace Dealership.WpfClient
 
             var mongoDbHandler = new MongoDbHandler(mongoDbConnectionString, mongoDbDatabaseName);
             var dealershipDbContext = new DealershipDbContext();
-            
+
             if (!mongoDbHandler.IsDataSeeded(dealershipDbContext))
             {
                 mongoDbHandler.SeedData(dealershipDbContext);
@@ -46,29 +49,48 @@ namespace Dealership.WpfClient
         {
             var xmlEmployeeReader = new XmlEmployeeReader();
 
-            var dbContext = new DealershipDbContext();
-            var data = new DealershipData(dbContext);
-            var employeeSeeder = new EmployeeSeeder(data);
+            using (var dbContext = new DealershipDbContext())
+            {
+                var data = new DealershipData(dbContext);
 
-            var employeeSeedUtil = new EmployeeSeedUtil(xmlEmployeeReader, employeeSeeder);
+                var employees = new DealershipRepository<Employee>(dbContext);
+                var positions = new DealershipRepository<Position>(dbContext);
+                var countries = new DealershipRepository<Country>(dbContext);
+                var cities = new DealershipRepository<City>(dbContext);
+                var addresses = new DealershipRepository<Address>(dbContext);
+                var shops = new DealershipRepository<Shop>(dbContext);
 
-            employeeSeedUtil.Seed();
+                var employeeSeeder = new EmployeeSeeder(data, employees, positions, countries, cities, addresses, shops);
+
+                var employeeSeedUtil = new EmployeeSeedUtil(xmlEmployeeReader, employeeSeeder);
+
+                employeeSeedUtil.Seed();
+            }
 
             MessageBox.Show("XML Success");
         }
 
         private void SeedDataFromSalesReports()
         {
-            SeedingSQLDBFromZip s = new SeedingSQLDBFromZip();
+            using (var dbContext = new DealershipDbContext())
+            {
+                var data = new DealershipData(dbContext);
+                var employees = new DealershipRepository<Employee>(dbContext);
+                var sales = new DealershipRepository<Sale>(dbContext);
+                var vehicles = new DealershipRepository<Vehicle>(dbContext);
+                var shops = new DealershipRepository<Shop>(dbContext);
 
-            var processor = new ZipUnpacker();
-            processor.Unpack(Constants.PathToZipFile, Constants.PathToUnzip);
+                SeedingSQLDBFromZip seedingSQLDBFromZip = new SeedingSQLDBFromZip(data, employees, shops, sales, vehicles);
 
-            var matchingDirectories = Utility.GetDirectoriesByPattern(Constants.PathToUnzippedFiles);
-            ReportReader reportReader = new ReportReader();
-            reportReader.ParseExcelData(matchingDirectories);
+                var processor = new ZipUnpacker();
+                processor.Unpack(Constants.PathToZipFile, Constants.PathToUnzip);
 
-            MessageBox.Show("Excell Success");
+                var matchingDirectories = Utility.GetDirectoriesByPattern(Constants.PathToUnzippedFiles);
+                ReportReader reportReader = new ReportReader(seedingSQLDBFromZip);
+                reportReader.ParseExcelData(matchingDirectories);
+
+                MessageBox.Show("Excell Success");
+            }
         }
     }
 }

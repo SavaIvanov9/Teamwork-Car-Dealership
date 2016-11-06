@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace Dealership.Data.Contracts
@@ -8,13 +8,11 @@ namespace Dealership.Data.Contracts
     public interface IDealershipRepository<T>
         where T : class
     {
-        IQueryable<T> All();
-
-        bool All(Func<T, bool> condition);
+        IEnumerable<T> All();
 
         ObservableCollection<T> Local { get; }
 
-        IQueryable<T> Search(Expression<Func<T, bool>> condition);
+        IEnumerable<T> Search(Expression<Func<T, bool>> condition);
 
         T GetById(int id);
 
@@ -24,14 +22,8 @@ namespace Dealership.Data.Contracts
 
         void Add(T entity);
 
-        void Update(T entity);
-
         void Delete(T entity);
 
         void Delete(int id);
-
-        void Detach(T entity);
-
-        int SaveChanges();
     }
 }

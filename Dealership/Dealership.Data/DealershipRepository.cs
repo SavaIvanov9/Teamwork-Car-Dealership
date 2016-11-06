@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 
 using Dealership.Data.Contracts;
+using System.Collections.Generic;
 
 namespace Dealership.Data
 {
@@ -34,20 +35,14 @@ namespace Dealership.Data
             }
         }
 
-        public IQueryable<T> All()
+        public IEnumerable<T> All()
         {
-            return this.DbSet.AsQueryable();
+            return this.DbSet.ToList();
         }
 
-        public bool All(Func<T, bool> condition)
+        public IEnumerable<T> Search(Expression<Func<T, bool>> condition)
         {
-            var local = this.DbSet.Local;
-            return local.All(condition);
-        }
-
-        public IQueryable<T> Search(Expression<Func<T, bool>> condition)
-        {
-            return this.All().Where(condition);
+            return this.DbSet.Where(condition).ToList();
         }
 
         public T GetById(int id)
@@ -58,11 +53,6 @@ namespace Dealership.Data
         public void Add(T entity)
         {
             this.ChangeEntityState(entity, EntityState.Added);
-        }
-
-        public void Update(T entity)
-        {
-            this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public void Delete(T entity)
@@ -78,16 +68,6 @@ namespace Dealership.Data
             {
                 this.Delete(entity);
             }
-        }
-
-        public void Detach(T entity)
-        {
-            this.ChangeEntityState(entity, EntityState.Detached);
-        }
-
-        public int SaveChanges()
-        {
-            return this.Context.SaveChanges();
         }
 
         private void ChangeEntityState(T entity, EntityState newEntityState)
