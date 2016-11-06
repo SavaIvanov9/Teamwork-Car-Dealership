@@ -60,14 +60,10 @@ namespace Dealership.Reports.Models
                     {
                         if (!market.Transactions.ContainsKey(day.Key.DateOfSale))
                         {
-                            market.Transactions = new Dictionary<DateTime?, List<decimal?>>();
                             market.Transactions[day.Key.DateOfSale] = new List<decimal?>();
                         }
 
-                        foreach (var sale in day)
-                        {
-                            market.Transactions[day.Key.DateOfSale].Add(sale.Price);
-                        }
+                        market.Transactions[day.Key.DateOfSale].Add(day.Key.Price);
                     }
 
                     report.Add(market);

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Xml;
 using Dealership.Reports.Models.Contracts;
-using Dealership.XmlFilesProcessing.Writers.Contracts;
 
 namespace Dealership.XmlFilesProcessing.Writers.Common
 {
@@ -21,7 +20,7 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
             string root = "shops";
             string shop = "shop";
             string name = "name";
-            string order = "order";
+            string orders = "orders";
             string date = "date";
             string transaction = "transaction";
 
@@ -42,17 +41,18 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
                     document.WriteStartElement(shop);
                     document.WriteAttributeString(name, entity.ShopPlace);
 
-                    document.WriteStartElement(order);
+                    document.WriteStartElement(orders);
 
                     foreach (var ent in entity.Transactions.Keys)
                     {
-                        document.WriteElementString(date, ent.ToString());
+                        document.WriteStartElement(date, ent.ToString());
 
                         foreach (var cash in entity.Transactions[ent])
                         {
                             document.WriteElementString(transaction, cash.ToString());
                         }
 
+                        document.WriteEndElement();
                     }
 
                     document.WriteEndElement();
