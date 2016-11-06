@@ -61,7 +61,7 @@ namespace Dealership.ConsoleClient
             string mongoDbConnectionString = Constants.MongoDbConnectionStringLocal;
             string mongoDbDatabaseName = Constants.MongoDbDatabaseNameLocal;
 
-            var mongoDbHandler = new MongoDbHandler(mongoDbConnectionString, mongoDbDatabaseName);
+            var mongoDbHandler = new MongoDbSeeder(mongoDbConnectionString, mongoDbDatabaseName);
             var dealershipDbContext = new DealershipDbContext();
 
             if (!mongoDbHandler.IsDataSeeded(dealershipDbContext))

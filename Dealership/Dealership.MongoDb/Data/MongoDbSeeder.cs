@@ -13,7 +13,7 @@ using Dealership.MongoDb.Repositories;
 
 namespace Dealership.MongoDb
 {
-    public class MongoDbHandler : IMongoDbHandler
+    public class MongoDbSeeder : IMongoDbSeeder
     {
         private const string PathToXml = "../../../Dealership.MongoDb/XmlSource/Vehicles.xml";
         private string connectionString;
@@ -24,7 +24,7 @@ namespace Dealership.MongoDb
 
         private IMongoDbContext database;
 
-        public MongoDbHandler(string connectionString, string databaseName)
+        public MongoDbSeeder(string connectionString, string databaseName)
         {
             this.connectionString = connectionString;
             this.databaseName = databaseName;
@@ -32,16 +32,16 @@ namespace Dealership.MongoDb
             this.vehicles = this.GetVehicleRepositoryFromMongo(this.database);
         }
 
-        public bool IsDataSeeded(IDealershipDbContext data)
+        public bool IsDataSeeded()
         {
-            return data.Vehicles.Any();
+            return false;
         }
 
-        public void SeedData(IDealershipDbContext data)
+        public void SeedData()
         {
             this.LoadVehiclesFromXml();
 
-            this.LoadVehiclesToSql(data);
+            this.LoadVehiclesToSql();
         }
 
         private MongoDbRepository<MongoDbVehicle> GetVehicleRepositoryFromMongo(IMongoDbContext db)
@@ -122,5 +122,7 @@ namespace Dealership.MongoDb
                 data.SaveChanges();
             }
         }
+
+        
     }
 }

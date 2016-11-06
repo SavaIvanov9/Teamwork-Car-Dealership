@@ -82,10 +82,10 @@
     <Compile Include="Contracts\IMongoDbVehicle.cs" />
     <Compile Include="Contracts\IMongoDbContext.cs" />
     <Compile Include="Contracts\IMongoDbEntity.cs" />
-    <Compile Include="Contracts\IMongoDbHandler.cs" />
+    <Compile Include="Contracts\IMongoDbSeeder.cs" />
     <Compile Include="Contracts\IMongoDbRepository.cs" />
     <Compile Include="Data\MongoDbContext.cs" />
-    <Compile Include="Data\MongoDbHandler.cs" />
+    <Compile Include="Data\MongoDbSeeder.cs" />
     <Compile Include="Models\MongoDbVehicle.cs" />
     <Compile Include="Models\XmlVehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
