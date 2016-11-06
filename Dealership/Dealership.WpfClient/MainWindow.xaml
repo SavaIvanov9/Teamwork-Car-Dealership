@@ -1,0 +1,15 @@
+﻿<Window x:Class="Dealership.WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dealership.WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="650" ResizeMode="NoResize">
+    <Grid Height="440" VerticalAlignment="Bottom" RenderTransformOrigin="0.497,0.513" Margin="-2,0,-8,-20" HorizontalAlignment="Left" Width="652">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/car-background.jpg" Stretch="Uniform"/>
+        </Grid.Background>
+        <Button x:Name="BtnLoadSql" Content="Load SQL Data" HorizontalAlignment="Left" Margin="29,50,0,0" VerticalAlignment="Top" Width="120" Height="48" Click="BtnLoadSqlClick"/>
+    </Grid>
+</Window>
