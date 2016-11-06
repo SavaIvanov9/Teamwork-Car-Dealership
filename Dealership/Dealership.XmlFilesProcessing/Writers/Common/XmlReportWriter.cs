@@ -10,7 +10,6 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
 {
     public abstract class XmlReportWriter : IXmlReportWriter
     {
-        protected const string ReportName = "/XmlShopReport.xml";
         protected readonly string Url;
         protected XmlWriterSettings Settings;
 

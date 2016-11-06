@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Dealership.Common;
@@ -26,29 +27,34 @@ namespace Dealership.ConsoleClient
 
             //SeedDataFromSalesReports();
 
-            using (var dbContext = new DealershipDbContext())
-            {
-                var shops = dbContext.Shops.ToList();
+            //using (var dbContext = new DealershipDbContext())
+            //{
+            //    var shops = dbContext.Shops.ToList();
 
-                foreach (var shop in shops)
-                {
-                    var dailySells = dbContext.Sales.Where(s => s.ShopId == shop.Id).GroupBy(s => new { s.Price, s.DateOfSale }).OrderBy(d => d.Key.DateOfSale);
+            //    foreach (var shop in shops)
+            //    {
+            //        var dailySells = dbContext.Sales.Where(s => s.ShopId == shop.Id).GroupBy(s => new { s.Price, s.DateOfSale }).OrderBy(d => d.Key.DateOfSale);
 
-                    foreach (var day in dailySells)
-                    {
-                        Console.WriteLine($"{shop.Name} ===> {day.Key.DateOfSale} ====> {day.Key.Price}");
-                    }
-                }
-            }
+            //        foreach (var day in dailySells)
+            //        {
+            //            Console.WriteLine($"{shop.Name} ===> {day.Key.DateOfSale} ====> {day.Key.Price}");
+            //        }
+            //    }
+            //}
+
+            GenerateXmlReports();
         }
 
         public static void GenerateXmlReports()
         {
             var dbContext = new DealershipDbContext();
             XmlQuery query = new XmlQuery();
-            ICollection<IXmlShopReport> reports = new List<IXmlShopReport>();
+            //ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
 
-            IXmlReportWriter writer = new XmlReportShopReportWriter(query.ShopReport(dbContext, reports));
+            ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
+
+            IXmlReportWriter writer = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
+            //IXmlReportWriter writer = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
 
             writer.Write();
         }

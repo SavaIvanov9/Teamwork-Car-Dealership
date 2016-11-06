@@ -14,6 +14,6 @@ namespace Dealership.Reports.Models.Contracts
 
         //ICollection<decimal?> Price { get; set; }
 
-        IDictionary<DateTime?, decimal?> Transactions { get; set; }
+        IDictionary<DateTime?, List<decimal?>> Transactions { get; set; }
     }
 }

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<shops>
+	<shop name="South Pro Automotive">
+		<order>
+			<date>21-Sep-16 12:00:00 AM</date>
+			<transaction>120000.00</transaction>
+		</order>
+	</shop>
+	<shop name="Brunswick Auto">
+		<order>
+			<date>21-Sep-16 12:00:00 AM</date>
+			<transaction>123000.00</transaction>
+		</order>
+	</shop>
+	<shop name="North East Auto">
+		<order>
+			<date>21-Sep-16 12:00:00 AM</date>
+			<transaction>122000.00</transaction>
+		</order>
+	</shop>
+</shops>

@@ -1,59 +1,68 @@
-﻿//using System.Collections.Generic;
-//using System.IO;
-//using System.Xml;
-//using Dealership.Reports.Models.Contracts;
-//using Dealership.XmlFilesProcessing.Writers.Contracts;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using Dealership.Reports.Models.Contracts;
+using Dealership.XmlFilesProcessing.Writers.Contracts;
 
-//namespace Dealership.XmlFilesProcessing.Writers.Common
-//{
-//    public class XmlDailyShopReportWriter : XmlReportWriter
-//    {
-//        private readonly IEnumerable<IXmlDailyShopReport> Report;
-//        public XmlDailyShopReportWriter() : base()
-//        {
+namespace Dealership.XmlFilesProcessing.Writers.Common
+{
+    public class XmlDailyShopReportWriter : XmlReportWriter
+    {
+        private readonly IEnumerable<IXmlDailyShopReport> Report;
+        private const string ReportName = "/XmlDailyShopReport.xml";
 
-//        }
-//        public override void Write()
-//        {
-//            string root = "shops";
-//            string shop = "shop";
-//            string name = "name";
-//            string order = "order";
-//            string date = "date";
-//            string total = "transaction";
 
-//            if (!Directory.Exists(this.Url))
-//            {
-//                Directory.CreateDirectory(this.Url);
-//            }
+        public XmlDailyShopReportWriter(IEnumerable<IXmlDailyShopReport> report) : base()
+        {
+            this.Report = report;
+        }
+        public override void Write()
+        {
+            string root = "shops";
+            string shop = "shop";
+            string name = "name";
+            string order = "order";
+            string date = "date";
+            string transaction = "transaction";
 
-//            string fileLocation = this.Url + ReportName;
+            if (!Directory.Exists(this.Url))
+            {
+                Directory.CreateDirectory(this.Url);
+            }
 
-//            using (var document = XmlWriter.Create(fileLocation, this.Settings))
-//            {
-//                document.WriteStartDocument();
-//                document.WriteStartElement(root);
+            string fileLocation = this.Url + ReportName;
 
-//                foreach (var entity in this.Report)
-//                {
-//                    document.WriteStartElement(shop);
-//                        document.WriteAttributeString(name, entity.ShopPlace);
+            using (var document = XmlWriter.Create(fileLocation, this.Settings))
+            {
+                document.WriteStartDocument();
+                document.WriteStartElement(root);
 
-//                    foreach (var ent in entity)
-//                    {
+                foreach (var entity in this.Report)
+                {
+                    document.WriteStartElement(shop);
+                    document.WriteAttributeString(name, entity.ShopPlace);
 
-//                        document.WriteStartElement(order);
+                        document.WriteStartElement(order);
 
-//                    }
-//                    document.WriteElementString(location, entity.Location);
-//                    document.WriteElementString(total, entity.TotalBudget.ToString());
 
-//                    document.WriteEndElement();
-//                }
+                    foreach (var ent in entity.Transactions)
+                    {
+                        document.WriteElementString(date,ent.Key.ToString());
 
-//                document.WriteEndElement();
-//                document.WriteEndDocument();
-//            }
-//        }
-//    }
-//}
+                        foreach (var cash in ent.Value)
+                        {
+                        document.WriteElementString(transaction, ent.Value.ToString());
+                        }
+
+                    }
+
+                        document.WriteEndElement();
+                    document.WriteEndElement();
+                }
+
+                document.WriteEndElement();
+                document.WriteEndDocument();
+            }
+        }
+    }
+}
