@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.JsonReporter", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MySQL", "Dealership.MySQL\Dealership.MySQL.csproj", "{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.WpfClient", "..\..\..\WPF\Teamwork-Car-Dealership\Dealership\Dealership.WpfClient\Dealership.WpfClient.csproj", "{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.WpfClient", "Dealership.WpfClient\Dealership.WpfClient.csproj", "{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
