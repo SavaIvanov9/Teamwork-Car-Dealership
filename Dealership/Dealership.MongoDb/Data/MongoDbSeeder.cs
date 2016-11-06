@@ -16,25 +16,38 @@ namespace Dealership.MongoDb
     public class MongoDbSeeder : IMongoDbSeeder
     {
         private const string PathToXml = "../../../Dealership.MongoDb/XmlSource/Vehicles.xml";
-        private string connectionString;
 
-        private string databaseName;
+        private readonly IMongoDbContext mongoDatabase;
 
-        private IMongoDbRepository<MongoDbVehicle> vehicles;
+        private IDealershipData data;
+        private IMongoDbRepository<MongoDbVehicle> mongoVehicles;
+        private IDealershipRepository<Vehicle> vehicles;
+        private IDealershipRepository<Brand> brands;
+        private IDealershipRepository<Fuel> fuels;
+        private IDealershipRepository<VehicleType> vehicleTypes;
 
-        private IMongoDbContext database;
-
-        public MongoDbSeeder(string connectionString, string databaseName)
+        public MongoDbSeeder(
+            string connectionString, 
+            string databaseName,
+            IDealershipData data,
+            IDealershipRepository<Vehicle> vehicles, 
+            IDealershipRepository<Brand> brands, 
+            IDealershipRepository<Fuel> fuels, 
+            IDealershipRepository<VehicleType> vehicleTypes
+            )
         {
-            this.connectionString = connectionString;
-            this.databaseName = databaseName;
-            this.database = this.LoadData(this.connectionString, this.databaseName);
-            this.vehicles = this.GetVehicleRepositoryFromMongo(this.database);
+            this.mongoDatabase = this.LoadData(connectionString, databaseName);
+            this.mongoVehicles = this.GetVehicleRepositoryFromMongo(this.mongoDatabase);
+            this.data = data;
+            this.vehicles = vehicles;
+            this.brands = brands;
+            this.fuels = fuels;
+            this.vehicleTypes = vehicleTypes;
         }
 
         public bool IsDataSeeded()
         {
-            return false;
+            return this.vehicles.Any();
         }
 
         public void SeedData()
@@ -60,7 +73,7 @@ namespace Dealership.MongoDb
             var serializer = new XmlSerializer(typeof(List<XmlVehicle>), new XmlRootAttribute("Vehicles"));
             var reader = new FileStream(path, FileMode.Open);
 
-            var resultCollection = new List<XmlVehicle>();
+            List<XmlVehicle> resultCollection;
 
             using (reader)
             {
@@ -85,27 +98,27 @@ namespace Dealership.MongoDb
                                             Fuel = xmlVehicle.Fuel
                                          };
 
-                this.vehicles.Add(mongoDbVehicle);
+                this.mongoVehicles.Add(mongoDbVehicle);
             }
         }
 
-        private void LoadVehiclesToSql(IDealershipDbContext data)
+        private void LoadVehiclesToSql()
         {
-            foreach (var vehicle in this.vehicles.All().ToList())
+            foreach (var vehicle in this.mongoVehicles.All())
             {
-                var brand = data.Brands.FirstOrDefault(b => b.Name == vehicle.Brand);
+                var brand = this.brands.FirstOrDefault(b => b.Name == vehicle.Brand);
                 if (brand == null)
                 {
                     brand = new Brand() { Name = vehicle.Brand };
                 }
 
-                var fuel = data.Fuels.FirstOrDefault(f => f.Name == vehicle.Fuel);
+                var fuel = this.fuels.FirstOrDefault(f => f.Name == vehicle.Fuel);
                 if (fuel == null)
                 {
                     fuel = new Fuel() { Name = vehicle.Fuel };
                 }
 
-                var vehicleType = data.VehiclesTypes.FirstOrDefault(v => v.Type == vehicle.Type);
+                var vehicleType = this.vehicleTypes.FirstOrDefault(v => v.Type == vehicle.Type);
                 if (vehicleType == null)
                 {
                     vehicleType = new VehicleType() { Type = vehicle.Type };
@@ -117,9 +130,9 @@ namespace Dealership.MongoDb
 
                 var dataVehicle = new Vehicle() { Model = model, Brand = brand, VehicleType = vehicleType, Fuel =  fuel, Cost = cost, Year = year };
 
-                data.Vehicles.Add(dataVehicle);
+                this.vehicles.Add(dataVehicle);
 
-                data.SaveChanges();
+                this.data.SaveChanges();
             }
         }
 
