@@ -42,21 +42,20 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
                     document.WriteStartElement(shop);
                     document.WriteAttributeString(name, entity.ShopPlace);
 
-                        document.WriteStartElement(order);
+                    document.WriteStartElement(order);
 
-
-                    foreach (var ent in entity.Transactions)
+                    foreach (var ent in entity.Transactions.Keys)
                     {
-                        document.WriteElementString(date,ent.Key.ToString());
+                        document.WriteElementString(date, ent.ToString());
 
-                        foreach (var cash in ent.Value)
+                        foreach (var cash in entity.Transactions[ent])
                         {
-                        document.WriteElementString(transaction, ent.Value.ToString());
+                            document.WriteElementString(transaction, cash.ToString());
                         }
 
                     }
 
-                        document.WriteEndElement();
+                    document.WriteEndElement();
                     document.WriteEndElement();
                 }
 

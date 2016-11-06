@@ -21,42 +21,38 @@ namespace Dealership.ConsoleClient
     {
         public static void Main()
         {
-            //SeedDataFromMongo();
+            SeedDataFromMongo();
 
-            //SeedDataFromXml();
+            SeedDataFromXml();
 
-            //SeedDataFromSalesReports();
+            SeedDataFromSalesReports();
 
-            //using (var dbContext = new DealershipDbContext())
-            //{
-            //    var shops = dbContext.Shops.ToList();
+            GenerateXmlShopReport();
 
-            //    foreach (var shop in shops)
-            //    {
-            //        var dailySells = dbContext.Sales.Where(s => s.ShopId == shop.Id).GroupBy(s => new { s.Price, s.DateOfSale }).OrderBy(d => d.Key.DateOfSale);
-
-            //        foreach (var day in dailySells)
-            //        {
-            //            Console.WriteLine($"{shop.Name} ===> {day.Key.DateOfSale} ====> {day.Key.Price}");
-            //        }
-            //    }
-            //}
-
-            GenerateXmlReports();
+            GenerateXmlDailyShopReport();
         }
 
-        public static void GenerateXmlReports()
+        public static void GenerateXmlDailyShopReport()
+        {
+
+            var dbContext = new DealershipDbContext();
+            XmlQuery query = new XmlQuery();
+
+            ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
+            IXmlReportWriter dailyWrite = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
+
+            dailyWrite.Write();
+        }
+
+        public static void GenerateXmlShopReport()
         {
             var dbContext = new DealershipDbContext();
             XmlQuery query = new XmlQuery();
-            //ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
 
-            ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
+            ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
+            IXmlReportWriter totalWriter = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
 
-            IXmlReportWriter writer = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
-            //IXmlReportWriter writer = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
-
-            writer.Write();
+            totalWriter.Write();
         }
 
         private static void SeedDataFromMongo()

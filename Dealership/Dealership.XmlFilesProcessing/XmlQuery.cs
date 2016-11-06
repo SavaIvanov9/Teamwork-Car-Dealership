@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Dealership.Data;
+using Dealership.Models.Models.XmlSource;
 using Dealership.Reports.Models.Contracts;
 using Dealership.Reports.Models.Models;
 using Dealership.XmlFilesProcessing.Writers.Common;
@@ -14,7 +16,6 @@ namespace Dealership.Reports.Models
     {
         public XmlQuery()
         {
-
         }
 
         public ICollection<IXmlShopReport> ShopReport(DealershipDbContext dbContext, ICollection<IXmlShopReport> report)
@@ -48,7 +49,8 @@ namespace Dealership.Reports.Models
 
                 foreach (var shop in shops)
                 {
-                    var dailySells = dbContext.Sales.Where(s => s.ShopId == shop.Id).GroupBy(s => new { s.Price, s.DateOfSale }).OrderBy(d => d.Key.DateOfSale);
+                    var dailySells = dbContext.Sales.Where(s => s.ShopId == shop.Id).GroupBy(s => new { s.DateOfSale, s.Price}).OrderBy(d => d.Key.DateOfSale);
+
 
                     IXmlDailyShopReport market = new XmlDailyShopReport();
 
@@ -58,10 +60,14 @@ namespace Dealership.Reports.Models
                     {
                         if (!market.Transactions.ContainsKey(day.Key.DateOfSale))
                         {
-                            market.Transactions = new Dictionary<DateTime?, List<decimal?>>();   
+                            market.Transactions = new Dictionary<DateTime?, List<decimal?>>();
+                            market.Transactions[day.Key.DateOfSale] = new List<decimal?>();
                         }
 
-                        market.Transactions[day.Key.DateOfSale].Add(day.Key.Price);
+                        foreach (var sale in day)
+                        {
+                            market.Transactions[day.Key.DateOfSale].Add(sale.Price);
+                        }
                     }
 
                     report.Add(market);
