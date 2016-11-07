@@ -20,5 +20,13 @@
 
         public const string ExcelSalesReportsConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" +
                                                     "Extended Properties='Excel 12.0 Xml;HDR=YES;'";//Coupling with expected datasource
+
+        public const string ExcelReportName = @"excel-report.xlsx";
+        public const string ExcelReportsPath = @"../../../../Reports/Excel_Reports/";
+
+        public static string ToCurrency(this decimal text)
+        {
+            return string.Format("{0:C}", text);
+        }
     }
 }

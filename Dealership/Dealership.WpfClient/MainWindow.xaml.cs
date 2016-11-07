@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 using Dealership.Common;
 using Dealership.Data;
@@ -43,12 +44,28 @@ namespace Dealership.WpfClient
             string mongoDbConnectionString = Constants.MongoDbConnectionStringLocal;
             string mongoDbDatabaseName = Constants.MongoDbDatabaseNameLocal;
 
-            var mongoDbHandler = new MongoDbHandler(mongoDbConnectionString, mongoDbDatabaseName);
-            var dealershipDbContext = new DealershipDbContext();
-
-            if (!mongoDbHandler.IsDataSeeded(dealershipDbContext))
+            using (var dbContext = new DealershipDbContext())
             {
-                mongoDbHandler.SeedData(dealershipDbContext);
+                var data = new DealershipData(dbContext);
+
+                var vehicles = new DealershipRepository<Vehicle>(dbContext);
+                var brands = new DealershipRepository<Brand>(dbContext);
+                var fuels = new DealershipRepository<Fuel>(dbContext);
+                var vehicleTypes = new DealershipRepository<VehicleType>(dbContext);
+
+                var mongoDbSeeder = new MongoDbSeeder(
+                    mongoDbConnectionString,
+                    mongoDbDatabaseName,
+                    data,
+                    vehicles,
+                    brands,
+                    fuels,
+                    vehicleTypes
+                    );
+                if (!mongoDbSeeder.IsDataSeeded())
+                {
+                    mongoDbSeeder.SeedData();
+                }
             }
 
             // MessageBox.Show("Data from MongoDb loaded successfully!");
@@ -78,6 +95,7 @@ namespace Dealership.WpfClient
 
             // MessageBox.Show("Data from XML loaded successfully!");
         }
+
 
         private void SeedDataFromSalesReports()
         {

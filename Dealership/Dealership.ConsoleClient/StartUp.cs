@@ -7,6 +7,8 @@ using Dealership.XmlFilesProcessing.Readers;
 using Dealership.Data.Seeders;
 using Dealership.DataSeed.Seeders;
 using Dealership.ExcelFilesProcessing;
+using Dealership.ExcelReportGenerator;
+using Dealership.ExcelReportGenerator.Contracts;
 using Dealership.Reports.Models;
 using Dealership.Reports.Models.Contracts;
 using Dealership.XmlFilesProcessing.Writers.Common;
@@ -30,6 +32,8 @@ namespace Dealership.ConsoleClient
             GenerateXmlShopReport();
 
             GenerateXmlDailyShopReport();
+
+            GenerateExcelReport();
         }
 
         public static void GenerateXmlDailyShopReport()
@@ -61,15 +65,29 @@ namespace Dealership.ConsoleClient
             string mongoDbConnectionString = Constants.MongoDbConnectionStringLocal;
             string mongoDbDatabaseName = Constants.MongoDbDatabaseNameLocal;
 
-            var mongoDbHandler = new MongoDbHandler(mongoDbConnectionString, mongoDbDatabaseName);
-            var dealershipDbContext = new DealershipDbContext();
-
-            if (!mongoDbHandler.IsDataSeeded(dealershipDbContext))
+            using (var dbContext = new DealershipDbContext())
             {
-                mongoDbHandler.SeedData(dealershipDbContext);
-            }
+                var data = new DealershipData(dbContext);
 
-            var data = new DealershipData(dealershipDbContext);
+                var vehicles = new DealershipRepository<Vehicle>(dbContext);
+                var brands = new DealershipRepository<Brand>(dbContext);
+                var fuels = new DealershipRepository<Fuel>(dbContext);
+                var vehicleTypes = new DealershipRepository<VehicleType>(dbContext);
+
+                var mongoDbSeeder = new MongoDbSeeder(
+                    mongoDbConnectionString, 
+                    mongoDbDatabaseName,
+                    data,
+                    vehicles,
+                    brands,
+                    fuels,
+                    vehicleTypes
+                    );
+                if (!mongoDbSeeder.IsDataSeeded())
+                {
+                    mongoDbSeeder.SeedData();
+                }
+            }
 
             Console.WriteLine("Mongo data seeded successfully!");
         }
@@ -130,5 +148,21 @@ namespace Dealership.ConsoleClient
             }
         }
 
+        private static void GenerateExcelReport()
+        {
+            IExcelReportGenerator excelReportGenerator = new ReportGenerator();
+
+            string reportsPath = Constants.ExcelReportsPath;
+            string excelReportName = Constants.ExcelReportName;
+
+            try
+            {
+                excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error occured. Cannot create Excel report...");
+            }
+        }
     }
 }
