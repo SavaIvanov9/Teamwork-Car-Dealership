@@ -9,15 +9,9 @@ namespace Dealership.Models.Models.MongoDbSource
     {
         private ICollection<Vehicle> vehicles;
 
-        [Obsolete("Only needed for serialization and materialization", true)]
         public Brand()
         {
             this.vehicles = new HashSet<Vehicle>();
-        }
-
-        public Brand(string name)
-        {
-            this.Name = name;           
         }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

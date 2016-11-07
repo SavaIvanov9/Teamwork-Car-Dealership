@@ -10,9 +10,9 @@
 
         public const string AllowedExcelFileExtensionPattern = "*.xls";
         public const string PathToUnzip = "../../../Data";
-        public const string PathToUnzippedFiles = "../../../Data/Sample-Sales-Reports";
+        public const string PathToUnzippedFiles = "../../../Data/Sales-Reports";
 
-        public const string PathToZipFile = "../../../Sample-Sales-Reports.zip";
+        public const string PathToZipFile = "../../../../Sales-Reports.zip";
 
         //Connection constants - they should be moved to configuration files
         public const string ExcelSalesReportsConnectionStringPattern = "Provider=Microsoft.ACE.OLEDB.12.0;" +
@@ -20,8 +20,5 @@
 
         public const string ExcelSalesReportsConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" +
                                                     "Extended Properties='Excel 12.0 Xml;HDR=YES;'";//Coupling with expected datasource
-
-        public const string ExcelReportName = @"excel-report.xlsx";
-        public const string ExtractedExcelReportsPath = @"../../../../Reports/Excel_Reports/";
     }
 }

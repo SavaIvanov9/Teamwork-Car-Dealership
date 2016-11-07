@@ -13,7 +13,7 @@ namespace Dealership.Models.Models.XmlSource
 
         public Country()
         {
-            this.Cities = new List<City>();
+            this.Cities = new HashSet<City>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

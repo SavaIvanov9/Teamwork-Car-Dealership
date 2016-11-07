@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 using Dealership.Data.Contracts;
 using Dealership.Data.Migrations;
@@ -25,19 +26,19 @@ namespace Dealership.Data
 
         public virtual IDbSet<VehicleType> VehiclesTypes { get; set; }
 
-        public IDbSet<Address> Addresses { get; set; }
+        public virtual IDbSet<Address> Addresses { get; set; }
 
-        public IDbSet<City> Cities { get; set; }
+        public virtual IDbSet<City> Cities { get; set; }
 
-        public IDbSet<Country> Countries { get; set; }
+        public virtual IDbSet<Country> Countries { get; set; }
 
-        public IDbSet<Employee> Employees { get; set; }
+        public virtual IDbSet<Employee> Employees { get; set; }
 
-        public IDbSet<Position> Positions { get; set; }
+        public virtual IDbSet<Position> Positions { get; set; }
 
-        public IDbSet<Shop> Shops { get; set; }
+        public virtual IDbSet<Shop> Shops { get; set; }
 
-        public IDbSet<Sale> Sales { get; set; }
+        public virtual IDbSet<Sale> Sales { get; set; }
 
         public new IDbSet<T> Set<T>() where T : class
         {
@@ -56,8 +57,10 @@ namespace Dealership.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Shop>().HasRequired(sh => sh.Address).WithMany().WillCascadeOnDelete(false);
         }
     }
 }

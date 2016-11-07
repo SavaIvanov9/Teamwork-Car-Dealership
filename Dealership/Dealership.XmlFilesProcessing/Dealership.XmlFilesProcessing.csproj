@@ -29,12 +29,35 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,15 +69,33 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\XmlEmployeeReader.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Writers\Common\XmlDailyShopReportWriter.cs" />
+    <Compile Include="Writers\Common\XmlShopReportWriter.cs" />
+    <Compile Include="Writers\Common\XmlReportWriter.cs" />
+    <Compile Include="Writers\Contracts\IXmlReportWriter.cs" />
+    <Compile Include="XmlQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dealership.DataSeed\Dealership.DataSeed.csproj">
       <Project>{08129128-3df8-4940-9b88-9f464f3455da}</Project>
       <Name>Dealership.DataSeed</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dealership.Data\Dealership.Data.csproj">
+      <Project>{9e65aeee-5f94-418e-8f97-05fd08796da7}</Project>
+      <Name>Dealership.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.Models\Dealership.Models.csproj">
+      <Project>{2732639c-1a0a-4df3-9793-f5e21a1a5162}</Project>
+      <Name>Dealership.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.Reports.Models\Dealership.Reports.csproj">
+      <Project>{d77c6761-58bf-416e-9064-4de2aa6ffe5c}</Project>
+      <Name>Dealership.Reports</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

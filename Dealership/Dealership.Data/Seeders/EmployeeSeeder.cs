@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Dealership.DataSeed.Models;
 using Dealership.Data.Contracts;
 using Dealership.Models.Models.XmlSource;
-using System;
 using System.Linq;
 
 namespace Dealership.Data.Seeders
@@ -11,15 +10,33 @@ namespace Dealership.Data.Seeders
     public class EmployeeSeeder : IEmployeeSeeder
     {
         private readonly IDealershipData data;
+        private readonly IDealershipRepository<Employee> employees;
+        private readonly IDealershipRepository<Position> positions;
+        private readonly IDealershipRepository<Country> countries;
+        private readonly IDealershipRepository<City> cities;
+        private readonly IDealershipRepository<Address> addresses;
+        private readonly IDealershipRepository<Shop> shops;
 
-        public EmployeeSeeder(IDealershipData data)
+        public EmployeeSeeder(IDealershipData data,
+            IDealershipRepository<Employee> employees,
+            IDealershipRepository<Position> positions,
+            IDealershipRepository<Country> countries,
+            IDealershipRepository<City> cities,
+            IDealershipRepository<Address> addresses,
+            IDealershipRepository<Shop> shops)
         {
             this.data = data;
+            this.employees = employees;
+            this.positions = positions;
+            this.countries = countries;
+            this.cities = cities;
+            this.addresses = addresses;
+            this.shops = shops;
         }
 
         public bool IsDataSeeded()
         {
-            var isDataSeeded = this.data.Employees.Any();
+            var isDataSeeded = this.employees.Any();
             return isDataSeeded;
         }
 
@@ -43,7 +60,7 @@ namespace Dealership.Data.Seeders
             foreach (var employee in employees)
             {
                 var positionName = employee.Position.Name;
-                var containsPosition = this.data.Positions.Local.Where(p => p.Name == positionName).Count() > 0;
+                var containsPosition = this.positions.Local.Where(p => p.Name == positionName).Any();
                 if (!containsPosition)
                 {
                     var position = new Position()
@@ -51,7 +68,7 @@ namespace Dealership.Data.Seeders
                         Name = positionName
                     };
 
-                    this.data.Positions.Add(position);
+                    this.positions.Add(position);
                 }
             }
 
@@ -63,7 +80,7 @@ namespace Dealership.Data.Seeders
             foreach (var employee in employees)
             {
                 var countryName = employee.Address.Country.Name;
-                var containsCountry = this.data.Countries.Local.Where(c => c.Name == countryName).Count() > 0;
+                var containsCountry = this.countries.Local.Where(c => c.Name == countryName).Any();
                 if (!containsCountry)
                 {
                     var country = new Country()
@@ -71,7 +88,7 @@ namespace Dealership.Data.Seeders
                         Name = countryName
                     };
 
-                    this.data.Countries.Add(country);
+                    this.countries.Add(country);
                 }
             }
 
@@ -83,11 +100,11 @@ namespace Dealership.Data.Seeders
             foreach (var employee in employees)
             {
                 var cityName = employee.Address.City.Name;
-                var containsCity = this.data.Cities.Local.Where(c => c.Name == cityName).Count() > 0;
+                var containsCity = this.cities.Local.Where(c => c.Name == cityName).Any();
                 if (!containsCity)
                 {
                     var countryName = employee.Address.Country.Name;
-                    var country = this.data.Countries.FirstOrDefault(c => c.Name == countryName);
+                    var country = this.countries.FirstOrDefault(c => c.Name == countryName);
 
                     var city = new City()
                     {
@@ -96,7 +113,7 @@ namespace Dealership.Data.Seeders
                     };
 
                     country.Cities.Add(city);
-                    this.data.Cities.Add(city);
+                    this.cities.Add(city);
                 }
             }
 
@@ -109,7 +126,7 @@ namespace Dealership.Data.Seeders
             {
                 var employeeAddress = employee.Address;
                 var employeeStreet = employeeAddress.Street;
-                var containsEmployeeAddress = this.data.Addresses.Local.Where(a => a.Street == employeeStreet).Count() > 0;
+                var containsEmployeeAddress = this.addresses.Local.Where(a => a.Street == employeeStreet).Any();
                 if (!containsEmployeeAddress)
                 {
                     SeedAddress(employeeAddress);
@@ -117,7 +134,7 @@ namespace Dealership.Data.Seeders
 
                 var shopAddress = employee.Shop.Address;
                 var shopStreet = shopAddress.Street;
-                var containsShopAddress = this.data.Addresses.Local.Where(a => a.Street == shopStreet).Count() > 0;
+                var containsShopAddress = this.addresses.Local.Where(a => a.Street == shopStreet).Any();
                 if (!containsShopAddress)
                 {
                     SeedAddress(shopAddress);
@@ -130,7 +147,7 @@ namespace Dealership.Data.Seeders
         private void SeedAddress(AddressDto addressDto)
         {
             var cityName = addressDto.City.Name;
-            var city = this.data.Cities.FirstOrDefault(c => c.Name == cityName);
+            var city = this.cities.FirstOrDefault(c => c.Name == cityName);
 
             var zipCode = addressDto.ZipCode;
             var street = addressDto.Street;
@@ -143,7 +160,7 @@ namespace Dealership.Data.Seeders
             };
 
             city.Addresses.Add(address);
-            this.data.Addresses.Add(address);
+            this.addresses.Add(address);
         }
 
         private void SeedShops(IEnumerable<EmployeeDto> employees)
@@ -151,11 +168,11 @@ namespace Dealership.Data.Seeders
             foreach (var employee in employees)
             {
                 var shopName = employee.Shop.Name;
-                var containsShop = this.data.Shops.Local.Where(sh => sh.Name == shopName).Count() > 0;
+                var containsShop = this.shops.Local.Where(sh => sh.Name == shopName).Any();
                 if (!containsShop)
                 {
                     var addressStreet = employee.Shop.Address.Street;
-                    var address = this.data.Addresses.FirstOrDefault(a => a.Street == addressStreet);
+                    var address = this.addresses.FirstOrDefault(a => a.Street == addressStreet);
 
                     var shop = new Shop()
                     {
@@ -164,7 +181,7 @@ namespace Dealership.Data.Seeders
                     };
 
                     address.Shops.Add(shop);
-                    this.data.Shops.Add(shop);
+                    this.shops.Add(shop);
                 }
             }
 
@@ -176,17 +193,17 @@ namespace Dealership.Data.Seeders
             foreach (var employee in employees)
             {
                 var employeePid = employee.Pid;
-                var containsEmployee = this.data.Employees.Local.Where(e => e.Pid == employeePid).Count() > 0;
+                var containsEmployee = this.employees.Local.Where(e => e.Pid == employeePid).Any();
                 if (!containsEmployee)
                 {
                     var addressStreet = employee.Address.Street;
-                    var address = this.data.Addresses.FirstOrDefault(a => a.Street == addressStreet);
+                    var address = this.addresses.FirstOrDefault(a => a.Street == addressStreet);
 
                     var positionName = employee.Position.Name;
-                    var position = this.data.Positions.FirstOrDefault(p => p.Name == positionName);
+                    var position = this.positions.FirstOrDefault(p => p.Name == positionName);
 
                     var shopName = employee.Shop.Name;
-                    var shop = this.data.Shops.FirstOrDefault(sh => sh.Name == shopName);
+                    var shop = this.shops.FirstOrDefault(sh => sh.Name == shopName);
 
                     var employeeEnity = new Employee()
                     {
@@ -205,7 +222,7 @@ namespace Dealership.Data.Seeders
                     position.Employees.Add(employeeEnity);
                     shop.Employees.Add(employeeEnity);
 
-                    this.data.Employees.Add(employeeEnity);
+                    this.employees.Add(employeeEnity);
                 }
             }
 

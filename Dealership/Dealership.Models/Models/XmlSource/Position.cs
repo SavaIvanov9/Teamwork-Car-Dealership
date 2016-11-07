@@ -13,7 +13,7 @@ namespace Dealership.Models.Models.XmlSource
 
         public Position()
         {
-            this.Employees = new List<Employee>();
+            this.Employees = new HashSet<Employee>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
