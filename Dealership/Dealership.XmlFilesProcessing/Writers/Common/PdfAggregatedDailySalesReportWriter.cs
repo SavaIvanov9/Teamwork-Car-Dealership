@@ -17,12 +17,13 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
         private readonly IEnumerable<IPdfAggregatedDailySalesReport> Report;
 
 
-        public PdfAggregatedDailySalesReportWriter(IEnumerable<IPdfAggregatedDailySalesReport> Report, string url = "../../../../Reports/Pdf-Reports")
+        public PdfAggregatedDailySalesReportWriter(IEnumerable<IPdfAggregatedDailySalesReport> report, string url = "../../../../Reports/Pdf-Reports")
         {
             this.Url = url;
-            this.Report = Report;
+            this.Report = report;
         }
-        public virtual void Write()
+
+        public void Write()
         {
             string path = this.Url + ReportName;
 

@@ -10,12 +10,11 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
 {
     public abstract class XmlReportWriter : IReportWriter
     {
-        protected readonly string Url;
+        protected const string DefaultUrl = "../../../../Reports/Xml-Reports";
         protected XmlWriterSettings Settings;
 
         protected XmlReportWriter()
         {
-            this.Url = "../../../../Reports/Xml-Reports";
             this.Settings = new XmlWriterSettings();
 
             Settings.Encoding = Encoding.UTF8;

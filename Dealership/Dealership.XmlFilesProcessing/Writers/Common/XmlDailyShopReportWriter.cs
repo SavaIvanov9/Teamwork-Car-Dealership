@@ -7,12 +7,15 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
 {
     public class XmlDailyShopReportWriter : XmlReportWriter
     {
-        private readonly IEnumerable<IXmlDailyShopReport> Report;
         private const string ReportName = "/XmlDailyShopReport.xml";
+        private readonly string Url;
+        private readonly IEnumerable<IXmlDailyShopReport> Report;
 
 
-        public XmlDailyShopReportWriter(IEnumerable<IXmlDailyShopReport> report) : base()
+        public XmlDailyShopReportWriter(IEnumerable<IXmlDailyShopReport> report, string url = DefaultUrl)
+            : base()
         {
+            this.Url = url;
             this.Report = report;
         }
         public override void Write()

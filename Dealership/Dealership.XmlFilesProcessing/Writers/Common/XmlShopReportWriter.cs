@@ -8,13 +8,16 @@ using Dealership.XmlFilesProcessing.Writers.Contracts;
 
 namespace Dealership.XmlFilesProcessing.Writers.Common
 {
-    public class XmlShopReportWriter : XmlReportWriter
+    public class XmlShopReportWriter : XmlReportWriter, IReportWriter
     {
-        private readonly IEnumerable<IXmlShopReport> Report;
         private const string ReportName = "/XmlShopReport.xml";
+        private readonly string Url;
+        private readonly IEnumerable<IXmlShopReport> Report;
 
-        public XmlShopReportWriter(IEnumerable<IXmlShopReport> report) : base()
+        public XmlShopReportWriter(IEnumerable<IXmlShopReport> report, string url = DefaultUrl)
+            : base()
         {
+            this.Url = url;
             this.Report = report;
         }
 
