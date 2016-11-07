@@ -14,7 +14,7 @@ namespace Dealership.ExcelReportGenerator
     {
         static void Main(string[] args)
         {
-            TestSQLite();
+            //TestSQLite();
             //TestMySQL();
             //GenerateExcelReportFromMySqlAndSqLite();
         }
