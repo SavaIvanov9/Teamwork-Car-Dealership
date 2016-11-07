@@ -16,6 +16,7 @@ using Dealership.XmlFilesProcessing.Writers.Contracts;
 using Dealership.Models.Models.XmlSource;
 using Dealership.Models.Models.SalesReportSource;
 using Dealership.Models.Models.MongoDbSource;
+using Dealership.JsonReporter;
 
 namespace Dealership.ConsoleClient
 {
@@ -34,6 +35,8 @@ namespace Dealership.ConsoleClient
             GenerateXmlDailyShopReport();
 
             GenerateRdfAggregateDailySalesReport();
+
+            GenerateJsonReports();
 
             GenerateExcelReport();
         }
@@ -89,7 +92,7 @@ namespace Dealership.ConsoleClient
                 var vehicleTypes = new DealershipRepository<VehicleType>(dbContext);
 
                 var mongoDbSeeder = new MongoDbSeeder(
-                    mongoDbConnectionString, 
+                    mongoDbConnectionString,
                     mongoDbDatabaseName,
                     data,
                     vehicles,
@@ -177,6 +180,17 @@ namespace Dealership.ConsoleClient
             {
                 Console.WriteLine("Error occured. Cannot create Excel report...");
             }
+        }
+
+        public static void GenerateJsonReports()
+        {
+            string directoryPath = Constants.JsonReportsPath;
+
+            var reports = JsonReports.GenerateReports(directoryPath);
+            Console.WriteLine("JSON Reports created!");
+
+            JsonReports.SeedReportsToMySQL(reports);
+            Console.WriteLine("Reports Updated to MySQL database!");
         }
     }
 }
