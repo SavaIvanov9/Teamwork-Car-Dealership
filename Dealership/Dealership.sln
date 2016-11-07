@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MongoDb", "Dealership.MongoDb\Dealership.MongoDb.csproj", "{00006437-1084-44A0-957E-14ECB503DF19}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.MySQL", "Dealership.MySQL\Dealership.MySQL.csproj", "{5C7BEF35-5F7F-485D-AFD4-5E14DD864AE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.WpfClient", "Dealership.WpfClient\Dealership.WpfClient.csproj", "{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.SQLite", "Dealership.SQLite\Dealership.SQLite.csproj", "{23E00475-39FB-4CD3-974F-505D0F326D18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,6 +139,14 @@ Global
 		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|x64.ActiveCfg = Release|Any CPU
 		{C60C0B37-E196-43FF-A8BB-2F3111A6DCCA}.Release|x64.Build.0 = Release|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Debug|x64.Build.0 = Debug|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Release|x64.ActiveCfg = Release|Any CPU
+		{23E00475-39FB-4CD3-974F-505D0F326D18}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
