@@ -29,9 +29,9 @@ namespace Dealership.ConsoleClient
 
             //SeedDataFromSalesReports();
 
-            //GenerateXmlShopReport();
+            GenerateXmlShopReport();
 
-            //GenerateXmlDailyShopReport();
+            GenerateXmlDailyShopReport();
 
             GenerateRdfAggregateDailySalesReport();
 

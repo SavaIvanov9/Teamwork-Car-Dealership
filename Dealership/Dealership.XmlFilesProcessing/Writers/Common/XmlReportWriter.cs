@@ -15,7 +15,7 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
 
         protected XmlReportWriter()
         {
-            this.Url = "../../../../Xml-Reports";
+            this.Url = "../../../../Reports/Xml-Reports";
             this.Settings = new XmlWriterSettings();
 
             Settings.Encoding = Encoding.UTF8;
