@@ -14,7 +14,7 @@ namespace Dealership.ExcelReportGenerator
     {
         static void Main(string[] args)
         {
-            //TestSQLite();
+            TestSQLite();
             //TestMySQL();
             //GenerateExcelReportFromMySqlAndSqLite();
         }
@@ -64,7 +64,7 @@ namespace Dealership.ExcelReportGenerator
         {
             IExcelReportGenerator excelReportGenerator = new ReportGenerator();
 
-            string reportsPath = Constants.ExtractedExcelReportsPath;
+            string reportsPath = Constants.ExcelReportsPath;
             string excelReportName = Constants.ExcelReportName;
 
             excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
