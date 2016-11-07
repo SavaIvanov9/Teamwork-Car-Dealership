@@ -51,7 +51,11 @@ namespace Dealership.JsonReporter
                     };
                     jsonReports.Add(jsonReport);
 
-                    File.WriteAllText($"{directoryPath}/{reportId}.json", jsonObj);
+                    //File.WriteAllText($"{directoryPath}/{reportId}.json", jsonObj);
+                    using(var writer =  new StreamWriter(string.Format("{0}/{1}.json",directoryPath, reportId)))
+                    {
+                        writer.WriteLine(jsonObj);
+                    }
                 }
                 Console.WriteLine("JSON Reports created!");
             }
