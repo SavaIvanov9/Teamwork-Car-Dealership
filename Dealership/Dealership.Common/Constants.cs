@@ -22,7 +22,7 @@
                                                     "Extended Properties='Excel 12.0 Xml;HDR=YES;'";//Coupling with expected datasource
 
         public const string ExcelReportName = @"excel-report.xlsx";
-        public const string ExtractedExcelReportsPath = @"../../../../Reports/Excel_Reports/";
+        public const string ExcelReportsPath = @"../../../../Reports/Excel_Reports/";
 
         public static string ToCurrency(this decimal text)
         {

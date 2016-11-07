@@ -152,10 +152,17 @@ namespace Dealership.ConsoleClient
         {
             IExcelReportGenerator excelReportGenerator = new ReportGenerator();
 
-            string reportsPath = Constants.ExtractedExcelReportsPath;
+            string reportsPath = Constants.ExcelReportsPath;
             string excelReportName = Constants.ExcelReportName;
 
-            excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+            try
+            {
+                excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error occured. Cannot create Excel report...");
+            }
         }
     }
 }
