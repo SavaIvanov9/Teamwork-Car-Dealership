@@ -33,7 +33,7 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
             {
                 Document document = new Document(PageSize.A4, 10, 10, 10, 10);
 
-                //PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
+                PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
 
                 document.Open();
 
@@ -53,7 +53,7 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
                         table.AddCell(entity.Model);
                         table.AddCell(entity.Quantity.ToString());
                         table.AddCell($"{entity.UnitPrice:F2}");
-                        table.AddCell(entity.TotalPrice.ToString());
+                        table.AddCell($"{entity.TotalPrice:F2}");
                     }
 
                     PdfPCell totalSum = new PdfPCell(new Phrase(dailyReport.TotalDailySales.ToString()));
