@@ -1,5 +1,7 @@
 ﻿using Dealership.Common;
 using Dealership.Data;
+using Dealership.Data.Contracts;
+using Dealership.Reports.Models;
 using System.Collections.Generic;
 using System.IO;
 
@@ -8,10 +10,12 @@ namespace Dealership.ExcelFilesProcessing
     public class ReportReader
     {
         private readonly SeedingSQLDBFromZip seedingSQLDBFromZip;
+        private readonly IDealershipData data;
 
-        public ReportReader(SeedingSQLDBFromZip seedingSQLDBFromZip)
+        public ReportReader(SeedingSQLDBFromZip seedingSQLDBFromZip, IDealershipData data)
         {
             this.seedingSQLDBFromZip = seedingSQLDBFromZip;
+            this.data = data;
         }
 
         public void ParseExcelData(IEnumerable<DirectoryInfo> matchingDirectories)

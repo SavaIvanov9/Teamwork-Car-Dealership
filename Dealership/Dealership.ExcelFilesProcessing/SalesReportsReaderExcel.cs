@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using DealerShip.Reports.Models;
 
 namespace Dealership.ExcelFilesProcessing
 {
@@ -16,6 +15,7 @@ namespace Dealership.ExcelFilesProcessing
         {
             this.ConnectionString = connectonString;
         }
+
         private void ReadSheet(ExcelSalesReport report, string Name, OleDbConnection connection)
         {
             OleDbCommand excelCommand = new OleDbCommand("SELECT * FROM [" + Name + " Sales$]", connection);
@@ -23,11 +23,13 @@ namespace Dealership.ExcelFilesProcessing
             using (var oleDbDataAdapter = new OleDbDataAdapter(excelCommand))
             {
                 var dataSet = new DataSet();
+
                 oleDbDataAdapter.Fill(dataSet);
 
                 using (var reader = dataSet.CreateDataReader())
                 {
                     reader.Read();
+
                     if (string.IsNullOrEmpty(reader[0].ToString()))
                     {
                         LeftOffset = 1;
@@ -38,22 +40,22 @@ namespace Dealership.ExcelFilesProcessing
                     }
 
                     report.DistributorName = reader[LeftOffset + 0].ToString();
-                    //report.Location = 
-                    reader.Read(); // Skip column names
+
+                    reader.Read(); // this skips column names
                     this.GetReportEntries(reader, Name, report.Records);
                 }
             }
-
         }
 
         public ExcelSalesReport ReadReport(string reportPath, string reportDate)
         {
-            //reportPath=D:\Julii\last\Teamwork-Car-Dealership\Dealership\Data\Sample-Sales-Reports\20-Jul-2016\Calgary-South_Pro_Automotive-Sales-Report-20-Jul-2016.xls
             ExcelSalesReport report = new ExcelSalesReport();
+
             report.DateOfSale = DateTime.Parse(reportDate);
+
             string LocalconnectionString = string.Format(this.ConnectionString, reportPath);
 
-            using (OleDbConnection connection = new OleDbConnection(LocalconnectionString)) //TODO: fix coupling, maybe use factory
+            using (OleDbConnection connection = new OleDbConnection(LocalconnectionString))
             {
                 connection.Open();
                 ReadSheet(report, "Vehicle", connection);

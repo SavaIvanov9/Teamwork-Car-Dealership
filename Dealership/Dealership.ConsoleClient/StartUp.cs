@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using Dealership.Common;
 using Dealership.Data;
@@ -31,14 +32,14 @@ namespace Dealership.ConsoleClient
             SeedDataFromSalesReports();
 
             GenerateJsonReports();
-
+            
             GenerateExcelReport();
 
             GenerateXmlShopReport();
 
             GenerateXmlDailyShopReport();
 
-            GenerateRdfAggregateDailySalesReport();
+            GenerateRdfAggregateDailySalesReport();            
         }
 
         private static void SeedDataFromMongo()
@@ -108,7 +109,7 @@ namespace Dealership.ConsoleClient
 
             Console.WriteLine("Unzipping and loading completed successfully!");
         }
-
+ 
         private static void ProcessZipFiles()
         {
             using (var dbContext = new DealershipDbContext())
@@ -125,7 +126,7 @@ namespace Dealership.ConsoleClient
                 processor.Unpack(Constants.PathToZipFile, Constants.PathToUnzip);
 
                 var matchingDirectories = Utility.GetDirectoriesByPattern(Constants.PathToUnzippedFiles);
-                ReportReader reportReader = new ReportReader(seedingSQLDBFromZip);
+                ReportReader reportReader = new ReportReader(seedingSQLDBFromZip, data);
                 reportReader.ParseExcelData(matchingDirectories);
             }
         }

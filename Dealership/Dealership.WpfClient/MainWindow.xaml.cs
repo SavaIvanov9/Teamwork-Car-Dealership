@@ -113,10 +113,10 @@ namespace Dealership.WpfClient
                 processor.Unpack(Constants.PathToZipFile, Constants.PathToUnzip);
 
                 var matchingDirectories = Utility.GetDirectoriesByPattern(Constants.PathToUnzippedFiles);
-                ReportReader reportReader = new ReportReader(seedingSQLDBFromZip);
+                ReportReader reportReader = new ReportReader(seedingSQLDBFromZip, data);
                 reportReader.ParseExcelData(matchingDirectories);
 
-            // MessageBox.Show("Data from Excell loaded successfully!");
+            // MessageBox.Show("Data from Excel loaded successfully!");
             }
         }
     }

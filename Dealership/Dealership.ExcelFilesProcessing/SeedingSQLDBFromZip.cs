@@ -1,15 +1,16 @@
-﻿using Dealership.Models.Models.SalesReportSource;
-using System;
+﻿using System;
 using System.Linq;
-using DealerShip.Reports.Models;
 using Dealership.Data.Contracts;
-using Dealership.Models.Models.XmlSource;
 using Dealership.Models.Models.MongoDbSource;
+using Dealership.Models.Models.SalesReportSource;
+using Dealership.Models.Models.XmlSource;
+using Dealership.Reports.Models;
 
 namespace Dealership.ExcelFilesProcessing
 {
     public class SeedingSQLDBFromZip
     {
+        private const int maxRecordsPerLoad = 100;
         private readonly IDealershipRepository<Employee> employees;
         private readonly IDealershipRepository<Shop> shops;
         private readonly IDealershipRepository<Vehicle> vehicles;
@@ -63,35 +64,45 @@ namespace Dealership.ExcelFilesProcessing
 
             return true;
         }
-        public void SeedSalesTable(ExcelSalesReport excelSalesReport) //SalesReportEntry
+        public void SeedSalesTable(ExcelSalesReport excelSalesReport)
         {
 
-            string shopName = excelSalesReport.DistributorName; //.Split('"')[1];   //sample: Supermarket “Bourgas – Plaza”
+            string shopName = excelSalesReport.DistributorName;
+            int recordsCounter = 0;
 
-            //TODO TRY CATCH
-            int shopId = GetShopIdByName(shopName); //TODO REMOVE LOWERDASH WHEN THE 2 TABLES CONVERGE
+            int shopId = GetShopIdByName(shopName);
+
             foreach (var record in excelSalesReport.Records)
             {
-                ValidateEmployeeId(record.EmployeeId);
-                Sale s = new Sale()
+                try
                 {
-                    ShopId = shopId,
-                    VehicleId = GetVehicleIdByModel(record.VehicleModel),
-                    EmployeeId = record.EmployeeId,
-                    Quantity = record.Quantity,
-                    Price = record.UnitPrice,
-                    DateOfSale = excelSalesReport.DateOfSale
-                };
+                    ValidateEmployeeId(record.EmployeeId);
 
-                //check if shopId and productId already exist and if they do not, cancel operation
-                //Validator.ValidateId(int id, IDbSet<T>)
+                    Sale s = new Sale()
+                    {
+                        ShopId = shopId,
+                        VehicleId = GetVehicleIdByModel(record.VehicleModel),
+                        EmployeeId = record.EmployeeId,
+                        Quantity = record.Quantity,
+                        Price = record.UnitPrice,
+                        DateOfSale = excelSalesReport.DateOfSale
+                    };
 
-                //bool productIdIsValid = true;// ValidateId(s.ProductId, salesReportsDBContext.Products);
+                    this.sales.Add(s);
 
-                this.sales.Add(s);
-                //throw new ArgumentException("No such product or shop id in database!"); //TODO HANDLE EXCEPTION
+                    recordsCounter++;
+
+                    if (recordsCounter >= maxRecordsPerLoad)
+                    {
+                        this.data.SaveChanges();
+                        recordsCounter = 0;
+                    }
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine("No such product or shop id in database!/n" + ex.Message);
+                }
             }
-
 
             this.data.SaveChanges();
         }

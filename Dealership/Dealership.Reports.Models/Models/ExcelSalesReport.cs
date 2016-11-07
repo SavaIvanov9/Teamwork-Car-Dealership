@@ -1,14 +1,11 @@
-﻿using Dealership.Reports.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace DealerShip.Reports.Models
+namespace Dealership.Reports.Models
 {
     public class ExcelSalesReport
     {
         public DateTime DateOfSale { get; set; }
-
-        public string Location { get; set; }
 
         public string DistributorName { get; set; }
 
