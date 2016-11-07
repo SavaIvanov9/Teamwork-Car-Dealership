@@ -7,6 +7,8 @@ using Dealership.XmlFilesProcessing.Readers;
 using Dealership.Data.Seeders;
 using Dealership.DataSeed.Seeders;
 using Dealership.ExcelFilesProcessing;
+using Dealership.ExcelReportGenerator;
+using Dealership.ExcelReportGenerator.Contracts;
 using Dealership.Reports.Models;
 using Dealership.Reports.Models.Contracts;
 using Dealership.XmlFilesProcessing.Writers.Common;
@@ -30,6 +32,8 @@ namespace Dealership.ConsoleClient
             GenerateXmlShopReport();
 
             GenerateXmlDailyShopReport();
+
+            GenerateExcelReport();
         }
 
         public static void GenerateXmlDailyShopReport()
@@ -144,5 +148,14 @@ namespace Dealership.ConsoleClient
             }
         }
 
+        private static void GenerateExcelReport()
+        {
+            IExcelReportGenerator excelReportGenerator = new ReportGenerator();
+
+            string reportsPath = Constants.ExtractedExcelReportsPath;
+            string excelReportName = Constants.ExcelReportName;
+
+            excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+        }
     }
 }

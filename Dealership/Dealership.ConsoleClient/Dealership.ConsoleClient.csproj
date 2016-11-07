@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dealership.ConsoleClient</RootNamespace>
     <AssemblyName>Dealership.ConsoleClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -107,6 +108,10 @@
     <ProjectReference Include="..\Dealership.ExcelFilesProcessing\Dealership.ExcelFilesProcessing.csproj">
       <Project>{62207070-DE20-4BBB-9F3C-FD3CD82C3EB9}</Project>
       <Name>Dealership.ExcelFilesProcessing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.ExcelReportGenerator\Dealership.ExcelReportGenerator.csproj">
+      <Project>{d6610ae8-01a9-4328-8eb9-8072b8466b67}</Project>
+      <Name>Dealership.ExcelReportGenerator</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dealership.Models\Dealership.Models.csproj">
       <Project>{2732639c-1a0a-4df3-9793-f5e21a1a5162}</Project>
