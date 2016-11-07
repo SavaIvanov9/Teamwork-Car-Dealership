@@ -12,9 +12,9 @@ using DealerShip.Reports.Models;
 
 namespace Dealership.Reports.Models
 {
-    public class XmlQuery
+    public class ReportQuery
     {
-        public XmlQuery()
+        public ReportQuery()
         {
         }
 

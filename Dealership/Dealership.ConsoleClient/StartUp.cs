@@ -23,11 +23,11 @@ namespace Dealership.ConsoleClient
     {
         public static void Main()
         {
-            //SeedDataFromMongo();
+            SeedDataFromMongo();
 
-            //SeedDataFromXml();
+            SeedDataFromXml();
 
-            //SeedDataFromSalesReports();
+            SeedDataFromSalesReports();
 
             GenerateXmlShopReport();
 
@@ -35,14 +35,14 @@ namespace Dealership.ConsoleClient
 
             GenerateRdfAggregateDailySalesReport();
 
-            //GenerateExcelReport();
+            GenerateExcelReport();
         }
 
         public static void GenerateXmlDailyShopReport()
         {
 
             var dbContext = new DealershipDbContext();
-            XmlQuery query = new XmlQuery();
+            ReportQuery query = new ReportQuery();
 
             ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
             IReportWriter dailyWrite = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
@@ -53,7 +53,7 @@ namespace Dealership.ConsoleClient
         public static void GenerateXmlShopReport()
         {
             var dbContext = new DealershipDbContext();
-            XmlQuery query = new XmlQuery();
+            ReportQuery query = new ReportQuery();
 
             ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
             IReportWriter totalWriter = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
@@ -64,7 +64,7 @@ namespace Dealership.ConsoleClient
         public static void GenerateRdfAggregateDailySalesReport()
         {
             var dbContext = new DealershipDbContext();
-            XmlQuery query = new XmlQuery();
+            ReportQuery query = new ReportQuery();
 
             ICollection<IPdfAggregatedDailySalesReport> totalReport = new List<IPdfAggregatedDailySalesReport>();
             IReportWriter totalWriter = new PdfAggregatedDailySalesReportWriter(query.AggregatedDailySalesReports(dbContext, totalReport));

@@ -78,7 +78,7 @@
     <Compile Include="Writers\Common\XmlShopReportWriter.cs" />
     <Compile Include="Writers\Common\XmlReportWriter.cs" />
     <Compile Include="Writers\Contracts\IReportWriter.cs" />
-    <Compile Include="XmlQuery.cs" />
+    <Compile Include="ReportQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dealership.DataSeed\Dealership.DataSeed.csproj">
