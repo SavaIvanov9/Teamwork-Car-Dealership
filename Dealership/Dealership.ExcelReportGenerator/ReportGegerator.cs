@@ -11,6 +11,7 @@ using Dealership.ExcelReportGenerator.Enums;
 using Dealership.JsonReporter;
 using Dealership.MySQL;
 using Dealership.SQLite;
+using Dealership.SQLite.Repositories;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
@@ -20,7 +21,8 @@ namespace Dealership.ExcelReportGenerator
     public class ReportGenerator : IExcelReportGenerator
     {
         private readonly DaDbContext MySqlData;
-        private readonly ItemExpensesDbEntities SqliteData;
+        //private readonly ItemExpensesDbEntities SqliteData;
+        private readonly IGenericRepository<Item> SQLiteData;
 
         private const int StartingColumn = 2;
         private const int EndingColumn = 9;
@@ -30,7 +32,9 @@ namespace Dealership.ExcelReportGenerator
         public ReportGenerator()
         {
             this.MySqlData = new DaDbContext();
-            this.SqliteData = new ItemExpensesDbEntities();
+            //this.SqliteData = new ItemExpensesDbEntities();
+
+            this.SQLiteData = new GenericRepository<Item>(new ItemExpensesDbEntities());
         }
 
         public void GenerateExcelReport(string pathToSave, string excelReportName)
@@ -60,7 +64,7 @@ namespace Dealership.ExcelReportGenerator
 
             using (var package = new ExcelPackage(fileInfo))
             {
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Net Revenue");
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Income Report");
 
                 this.GenerateExcelHeadDocument(worksheet);
                 this.GenerateExcelBodyDocument(worksheet);
@@ -136,14 +140,32 @@ namespace Dealership.ExcelReportGenerator
 
         private string GetItemExpense(JsonReportEntry currentEntity)
         {
-            if (this.SqliteData
-                .Items
+            //if (this.SqliteData
+            //    .Items
+            //    .Select(x => x.Name)
+            //    .Contains(currentEntity.ProductName))
+            //{
+            //    var item = this.SqliteData
+            //    .Items
+            //    .Where(i => i.Name == currentEntity.ProductName)
+            //    .Select(i => new
+            //    {
+            //        Expense = i.Taxes
+            //    })
+            //    .First();
+
+            //    return item.Expense;
+            //}
+
+            //return "0%";
+
+            if (this.SQLiteData
+                .GetAll()
                 .Select(x => x.Name)
                 .Contains(currentEntity.ProductName))
             {
-                var item = this.SqliteData
-                .Items
-                .Where(i => i.Name == currentEntity.ProductName)
+                var item = this.SQLiteData
+                .GetAll(i => i.Name == currentEntity.ProductName)
                 .Select(i => new
                 {
                     Expense = i.Taxes
