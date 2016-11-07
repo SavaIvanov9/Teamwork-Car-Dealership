@@ -72,5 +72,59 @@ namespace Dealership.Reports.Models
 
             return report;
         }
+
+        public ICollection<IPdfAggregatedDailySalesReport> AggregatedDailySalesReports(DealershipDbContext dbContext,
+            ICollection<IPdfAggregatedDailySalesReport> report)
+        {
+            using (dbContext)
+            {
+                var query = dbContext.Sales
+                    .Join(dbContext.Vehicles,
+                        sales => sales.VehicleId,
+                        vehicle => vehicle.Id,
+                        (sale, vehicle) => new { sale, vehicle })
+                    .Join(dbContext.Brands,
+                        salesVehicle => salesVehicle.vehicle.BrandId,
+                        brand => brand.Id,
+                        (salesVehicle, brand) =>
+                            new { salesVehicle, brand })
+                    .Select(all =>
+                       new
+                       {
+                           DateOfSale = all.salesVehicle.sale.DateOfSale,
+                           Brand = all.salesVehicle.vehicle.Brand.Name,
+                           Model = all.salesVehicle.vehicle.Model,
+                           Quantity = all.salesVehicle.sale.Quantity,
+                           UnitPrice = all.salesVehicle.sale.Price / all.salesVehicle.sale.Quantity,
+                           TotalPrice = all.salesVehicle.sale.Price,
+                       })
+                        .GroupBy(s => s.DateOfSale);
+
+                foreach (var day in query)
+                {
+                    IPdfAggregatedDailySalesReport dayReport = new PdfAggregatedDailySalesReport(day.Key.Value);
+
+                    foreach (var entity in day)
+                    {
+                        IPdfAggregatedDailyEntity dailyEntity = new PdfAggregatedDailyEntity();
+
+                        dailyEntity.Brand = entity.Brand;
+                        dailyEntity.Model = entity.Model;
+                        dailyEntity.Quantity = entity.Quantity;
+                        dailyEntity.UnitPrice = entity.UnitPrice;
+                        dailyEntity.TotalPrice = entity.TotalPrice;
+
+                        dayReport.DailyEntities.Add(dailyEntity);
+                    }
+
+                    decimal? totalDailySales = day.Sum(s => s.TotalPrice);
+                    dayReport.TotalDailySales = totalDailySales;
+
+                    report.Add(dayReport);
+                }
+            }
+
+            return report;
+        }
     }
 }

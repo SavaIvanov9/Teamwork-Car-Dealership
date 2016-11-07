@@ -8,7 +8,7 @@ using Dealership.XmlFilesProcessing.Writers.Contracts;
 
 namespace Dealership.XmlFilesProcessing.Writers.Common
 {
-    public abstract class XmlReportWriter : IXmlReportWriter
+    public abstract class XmlReportWriter : IReportWriter
     {
         protected readonly string Url;
         protected XmlWriterSettings Settings;

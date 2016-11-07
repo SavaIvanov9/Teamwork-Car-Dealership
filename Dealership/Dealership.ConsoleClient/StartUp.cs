@@ -23,17 +23,19 @@ namespace Dealership.ConsoleClient
     {
         public static void Main()
         {
-            SeedDataFromMongo();
+            //SeedDataFromMongo();
 
-            SeedDataFromXml();
+            //SeedDataFromXml();
 
-            SeedDataFromSalesReports();
+            //SeedDataFromSalesReports();
 
-            GenerateXmlShopReport();
+            //GenerateXmlShopReport();
 
-            GenerateXmlDailyShopReport();
+            //GenerateXmlDailyShopReport();
 
-            GenerateExcelReport();
+            GenerateRdfAggregateDailySalesReport();
+
+            //GenerateExcelReport();
         }
 
         public static void GenerateXmlDailyShopReport()
@@ -43,7 +45,7 @@ namespace Dealership.ConsoleClient
             XmlQuery query = new XmlQuery();
 
             ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
-            IXmlReportWriter dailyWrite = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
+            IReportWriter dailyWrite = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
 
             dailyWrite.Write();
         }
@@ -54,10 +56,22 @@ namespace Dealership.ConsoleClient
             XmlQuery query = new XmlQuery();
 
             ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
-            IXmlReportWriter totalWriter = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
+            IReportWriter totalWriter = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
 
             totalWriter.Write();
         }
+
+        public static void GenerateRdfAggregateDailySalesReport()
+        {
+            var dbContext = new DealershipDbContext();
+            XmlQuery query = new XmlQuery();
+
+            ICollection<IPdfAggregatedDailySalesReport> totalReport = new List<IPdfAggregatedDailySalesReport>();
+            IReportWriter totalWriter = new PdfAggregatedDailySalesReportWriter(query.AggregatedDailySalesReports(dbContext, totalReport));
+
+            totalWriter.Write();
+        }
+
 
         private static void SeedDataFromMongo()
         {

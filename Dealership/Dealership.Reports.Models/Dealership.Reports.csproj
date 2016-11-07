@@ -73,10 +73,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IPdfAggregatedDailyEntity.cs" />
+    <Compile Include="Contracts\IPdfAggregatedDailySalesReport.cs" />
     <Compile Include="Contracts\IXmlDailyShopReport.cs" />
     <Compile Include="Contracts\IXmlShopReport.cs" />
     <Compile Include="Models\ExcelSalesReport.cs" />
     <Compile Include="Models\ExcelSalesReportEntry.cs" />
+    <Compile Include="Models\PdfAggregatedDailyEntity.cs" />
+    <Compile Include="Models\PdfAggregatedDailySalesReport.cs" />
     <Compile Include="Models\XmlDailyShopReport.cs" />
     <Compile Include="Models\XmlShopReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
