@@ -18,6 +18,14 @@ namespace Dealership.Common
             var matchingDirectories = dirInfo.GetDirectories().Where(d => Regex.IsMatch(d.Name, regex));
             return matchingDirectories;
         }
+
+        public static void CreateDirectoryIfNotExists(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+        }
     }
 }
 
