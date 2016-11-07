@@ -12,12 +12,13 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
 {
     public class PdfAggregatedDailySalesReportWriter : IReportWriter
     {
+        private const string DefaultUrl = Dealership.Common.Constants.PdfReportsPath;
         private const string ReportName = "/PdfAggregateDailySalesReport.pdf";
         private readonly string Url;
         private readonly IEnumerable<IPdfAggregatedDailySalesReport> Report;
 
 
-        public PdfAggregatedDailySalesReportWriter(IEnumerable<IPdfAggregatedDailySalesReport> report, string url = "../../../../Reports/Pdf-Reports")
+        public PdfAggregatedDailySalesReportWriter(IEnumerable<IPdfAggregatedDailySalesReport> report, string url = DefaultUrl)
         {
             this.Url = url;
             this.Report = report;

@@ -30,51 +30,16 @@ namespace Dealership.ConsoleClient
 
             SeedDataFromSalesReports();
 
+            GenerateJsonReports();
+
+            GenerateExcelReport();
+
             GenerateXmlShopReport();
 
             GenerateXmlDailyShopReport();
 
             GenerateRdfAggregateDailySalesReport();
-
-            GenerateJsonReports();
-
-            GenerateExcelReport();
         }
-
-        public static void GenerateXmlDailyShopReport()
-        {
-
-            var dbContext = new DealershipDbContext();
-            ReportQuery query = new ReportQuery();
-
-            ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
-            IReportWriter dailyWrite = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
-
-            dailyWrite.Write();
-        }
-
-        public static void GenerateXmlShopReport()
-        {
-            var dbContext = new DealershipDbContext();
-            ReportQuery query = new ReportQuery();
-
-            ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
-            IReportWriter totalWriter = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
-
-            totalWriter.Write();
-        }
-
-        public static void GenerateRdfAggregateDailySalesReport()
-        {
-            var dbContext = new DealershipDbContext();
-            ReportQuery query = new ReportQuery();
-
-            ICollection<IPdfAggregatedDailySalesReport> totalReport = new List<IPdfAggregatedDailySalesReport>();
-            IReportWriter totalWriter = new PdfAggregatedDailySalesReportWriter(query.AggregatedDailySalesReports(dbContext, totalReport));
-
-            totalWriter.Write();
-        }
-
 
         private static void SeedDataFromMongo()
         {
@@ -191,6 +156,46 @@ namespace Dealership.ConsoleClient
 
             JsonReports.SeedReportsToMySQL(reports);
             Console.WriteLine("Reports Updated to MySQL database!");
+        }
+
+        public static void GenerateXmlDailyShopReport()
+        {
+
+            var dbContext = new DealershipDbContext();
+            ReportQuery query = new ReportQuery();
+
+            ICollection<IXmlDailyShopReport> dailyReport = new List<IXmlDailyShopReport>();
+            IReportWriter dailyWrite = new XmlDailyShopReportWriter(query.DailyShopReport(dbContext, dailyReport));
+
+            dailyWrite.Write();
+        }
+
+        public static void GenerateXmlShopReport()
+        {
+            Console.WriteLine("Generating Xml report...");
+
+            var dbContext = new DealershipDbContext();
+            ReportQuery query = new ReportQuery();
+
+            ICollection<IXmlShopReport> totalReport = new List<IXmlShopReport>();
+            IReportWriter totalWriter = new XmlShopReportWriter(query.ShopReport(dbContext, totalReport));
+
+            totalWriter.Write();
+            Console.WriteLine("Xml report created successfully");
+        }
+
+        public static void GenerateRdfAggregateDailySalesReport()
+        {
+            Console.WriteLine("Generating Pdf report...");
+            var dbContext = new DealershipDbContext();
+            ReportQuery query = new ReportQuery();
+
+            ICollection<IPdfAggregatedDailySalesReport> totalReport = new List<IPdfAggregatedDailySalesReport>();
+            IReportWriter totalWriter = new PdfAggregatedDailySalesReportWriter(query.AggregatedDailySalesReports(dbContext, totalReport));
+
+            totalWriter.Write();
+
+            Console.WriteLine("Pdf report created successfully");
         }
     }
 }

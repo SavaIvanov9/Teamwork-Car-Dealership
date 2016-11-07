@@ -81,6 +81,10 @@
     <Compile Include="ReportQuery.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dealership.Common\Dealership.Common.csproj">
+      <Project>{b58e0ed5-49d4-4eee-8c08-252d4c666c03}</Project>
+      <Name>Dealership.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dealership.DataSeed\Dealership.DataSeed.csproj">
       <Project>{08129128-3df8-4940-9b88-9f464f3455da}</Project>
       <Name>Dealership.DataSeed</Name>

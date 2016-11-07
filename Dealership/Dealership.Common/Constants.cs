@@ -24,7 +24,14 @@
         public const string ExcelReportName = @"excel-report.xlsx";
         public const string ExcelReportsPath = @"../../../../Reports/Excel_Reports/";
 
-        public const string JsonReportsPath = "../../../Json-Reports";
+        public const string JsonReportsPath = "../../../Reports/Json-Reports";
+
+        public const string XmlReportsPath = "../../../../Reports/Xml-Reports";
+
+        public const string PdfReportsPath = "../../../../Reports/Rdf-Reports";
+
+
+
 
         public static string ToCurrency(this decimal text)
         {

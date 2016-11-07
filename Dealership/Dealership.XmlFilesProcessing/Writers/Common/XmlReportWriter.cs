@@ -10,7 +10,7 @@ namespace Dealership.XmlFilesProcessing.Writers.Common
 {
     public abstract class XmlReportWriter : IReportWriter
     {
-        protected const string DefaultUrl = "../../../../Reports/Xml-Reports";
+        protected const string DefaultUrl = Dealership.Common.Constants.XmlReportsPath;
         protected XmlWriterSettings Settings;
 
         protected XmlReportWriter()
