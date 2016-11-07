@@ -1,38 +1,38 @@
-﻿using Dealership.Data;
+﻿using Dealership.Common;
+using Dealership.JsonReporter.Modules;
 using Dealership.MySQL;
 using Newtonsoft.Json;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telerik.OpenAccess;
 
 namespace Dealership.JsonReporter
 {
-    class StartUp
+    public static class JsonReports
     {
-        static void Main(string[] args)
+        public static ICollection<JsonReport> GenerateReports(string directoryPath)
         {
+
+            var kernel = new StandardKernel(new EntityFrameworkModule());
+            var dp = kernel.Get<SQLServerDataProvider>();
+
             ICollection<JsonReport> jsonReports = new HashSet<JsonReport>();
 
-            // creating json reports.
-            using (var dbContext = new DealershipDbContext())
+            using (var uow = dp.UnitOfWork())
             {
-                var vehicles = dbContext.Vehicles.ToList();
-                var sales = dbContext.Sales;
-                string directoryPath = "../../../Json-Reports";
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
+                var vehicles = dp.Vehicles.GetAll();
+                var sales = dp.Sales.GetAll();
+
+                Utility.CreateDirectoryIfNotExists(directoryPath);
 
                 foreach (var item in vehicles)
                 {
                     int reportId = item.Id;
                     var totalQuantitySold = sales.Where(x => x.VehicleId == reportId).Sum(x => x.Quantity) ?? 0;
-                    var totalIncome = sales.Where(x => x.VehicleId == reportId).Sum(x => x.Price*x.Quantity) ?? 0.00m;
+                    var totalIncome = sales.Where(x => x.VehicleId == reportId).Sum(x => x.Price * x.Quantity) ?? 0.00m;
 
                     var jsonReportEntry = new JsonReportEntry()
                     {
@@ -51,35 +51,39 @@ namespace Dealership.JsonReporter
                     };
                     jsonReports.Add(jsonReport);
 
-                    //File.WriteAllText($"{directoryPath}/{reportId}.json", jsonObj);
-                    using(var writer =  new StreamWriter(string.Format("{0}/{1}.json",directoryPath, reportId)))
+                    using (var writer = new StreamWriter(string.Format("{0}/{1}.json", directoryPath, reportId)))
                     {
                         writer.WriteLine(jsonObj);
                     }
                 }
-                Console.WriteLine("JSON Reports created!");
             }
 
-            // uploding reports to MySQL
+            return jsonReports;
+        }
+
+        public static void SeedReportsToMySQL(ICollection<JsonReport> jsonReports)
+        {
+            var kernel = new StandardKernel(new DataAccessModule());
             UpdateDatabase();
-            using (var dbContext = new DaDbContext())
+
+            var dp = kernel.Get<MySQLDataProvider>();
+            using (var uow = dp.UnitOfWork())
             {
-                var dbreports = dbContext.GetAll<JsonReport>();
+                var mysqlReports = dp.JsonReports.GetAll();
                 foreach (var item in jsonReports)
                 {
-                    if (dbreports.FirstOrDefault(x=>x.Id==item.Id) == null)
+                    if (mysqlReports.FirstOrDefault(x => x.Id == item.Id) == null)
                     {
-                        dbContext.Add(item);
+                        dp.JsonReports.Add(item);
                     }
                 }
-                dbContext.SaveChanges();
-                Console.WriteLine("Reports Updated to MySQL database!");
+                uow.Commit();
             }
         }
 
         private static void UpdateDatabase()
         {
-            using (var context = new DaDbContext())
+            using (var context = new DataAccessDbContext())
             {
                 var schemaHandler = context.GetSchemaHandler();
                 EnsureDB(schemaHandler);

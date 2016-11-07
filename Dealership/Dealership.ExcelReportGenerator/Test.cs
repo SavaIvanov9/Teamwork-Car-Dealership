@@ -50,7 +50,7 @@ namespace Dealership.ExcelReportGenerator
         {
             Console.WriteLine("test mysql");
 
-            using (var dbContext = new DaDbContext())
+            using (var dbContext = new DataAccessDbContext())
             {
                 var items = dbContext.JsonReports.ToList();
                 foreach (var r in items)

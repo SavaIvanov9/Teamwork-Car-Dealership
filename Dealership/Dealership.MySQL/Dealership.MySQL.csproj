@@ -57,7 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DaDbContext.cs" />
+    <Compile Include="DataAccessDbContext.cs" />
     <Compile Include="FluentModelMetadataSource.cs" />
     <Compile Include="JsonReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

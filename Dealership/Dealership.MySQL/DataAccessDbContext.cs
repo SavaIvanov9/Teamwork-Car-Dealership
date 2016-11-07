@@ -8,13 +8,13 @@ using Telerik.OpenAccess.Metadata;
 
 namespace Dealership.MySQL
 {
-    public partial class DaDbContext : OpenAccessContext
+    public partial class DataAccessDbContext : OpenAccessContext
     {
         private static string connectionStringName = @"DealershipReports";
         private static BackendConfiguration backend = GetBackendConfiguration();
         private static MetadataSource metadataSource = new FluentModelMetadataSource();
 
-        public DaDbContext()
+        public DataAccessDbContext()
                 : base(connectionStringName, backend, metadataSource)
             { }
 

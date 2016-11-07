@@ -2,7 +2,7 @@
 <shops>
 	<shop name="South Pro Automotive">
 		<orders>
-			<date xmlns="7/20/2016 12:00:00 AM">
+			<date xmlns="20.7.2016 г. 00:00:00 ч.">
 				<transaction>8000.00</transaction>
 				<transaction>8500.00</transaction>
 				<transaction>10000.00</transaction>
@@ -23,7 +23,7 @@
 				<transaction>105000.00</transaction>
 				<transaction>120000.00</transaction>
 			</date>
-			<date xmlns="8/21/2016 12:00:00 AM">
+			<date xmlns="21.8.2016 г. 00:00:00 ч.">
 				<transaction>8000.00</transaction>
 				<transaction>8500.00</transaction>
 				<transaction>10000.00</transaction>
@@ -43,7 +43,7 @@
 				<transaction>105000.00</transaction>
 				<transaction>120000.00</transaction>
 			</date>
-			<date xmlns="9/21/2016 12:00:00 AM">
+			<date xmlns="21.9.2016 г. 00:00:00 ч.">
 				<transaction>7000.00</transaction>
 				<transaction>8700.00</transaction>
 				<transaction>10000.00</transaction>
@@ -73,7 +73,7 @@
 	</shop>
 	<shop name="Brunswick Auto">
 		<orders>
-			<date xmlns="7/20/2016 12:00:00 AM">
+			<date xmlns="20.7.2016 г. 00:00:00 ч.">
 				<transaction>9000.00</transaction>
 				<transaction>14000.00</transaction>
 				<transaction>14500.00</transaction>
@@ -94,7 +94,7 @@
 				<transaction>120000.00</transaction>
 				<transaction>122000.00</transaction>
 			</date>
-			<date xmlns="8/21/2016 12:00:00 AM">
+			<date xmlns="21.8.2016 г. 00:00:00 ч.">
 				<transaction>9000.00</transaction>
 				<transaction>14000.00</transaction>
 				<transaction>14500.00</transaction>
@@ -112,7 +112,7 @@
 				<transaction>85000.00</transaction>
 				<transaction>120000.00</transaction>
 			</date>
-			<date xmlns="9/21/2016 12:00:00 AM">
+			<date xmlns="21.9.2016 г. 00:00:00 ч.">
 				<transaction>9000.00</transaction>
 				<transaction>10000.00</transaction>
 				<transaction>13000.00</transaction>
@@ -142,7 +142,7 @@
 	</shop>
 	<shop name="North East Auto">
 		<orders>
-			<date xmlns="7/20/2016 12:00:00 AM">
+			<date xmlns="20.7.2016 г. 00:00:00 ч.">
 				<transaction>9000.00</transaction>
 				<transaction>10000.00</transaction>
 				<transaction>25000.00</transaction>
@@ -165,7 +165,7 @@
 				<transaction>121000.00</transaction>
 				<transaction>122000.00</transaction>
 			</date>
-			<date xmlns="8/21/2016 12:00:00 AM">
+			<date xmlns="21.8.2016 г. 00:00:00 ч.">
 				<transaction>5000.00</transaction>
 				<transaction>9000.00</transaction>
 				<transaction>10000.00</transaction>
@@ -186,7 +186,7 @@
 				<transaction>121000.00</transaction>
 				<transaction>122000.00</transaction>
 			</date>
-			<date xmlns="9/21/2016 12:00:00 AM">
+			<date xmlns="21.9.2016 г. 00:00:00 ч.">
 				<transaction>6000.00</transaction>
 				<transaction>10000.00</transaction>
 				<transaction>11000.00</transaction>

@@ -20,7 +20,7 @@ namespace Dealership.ExcelReportGenerator
 {
     public class ReportGenerator : IExcelReportGenerator
     {
-        private readonly DaDbContext MySqlData;
+        private readonly DataAccessDbContext MySqlData;
         //private readonly ItemExpensesDbEntities SqliteData;
         private readonly IGenericRepository<Item> SQLiteData;
 
@@ -31,7 +31,7 @@ namespace Dealership.ExcelReportGenerator
 
         public ReportGenerator()
         {
-            this.MySqlData = new DaDbContext();
+            this.MySqlData = new DataAccessDbContext();
             //this.SqliteData = new ItemExpensesDbEntities();
 
             this.SQLiteData = new GenericRepository<Item>(new ItemExpensesDbEntities());
