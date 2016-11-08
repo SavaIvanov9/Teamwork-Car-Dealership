@@ -138,9 +138,11 @@ namespace Dealership.ConsoleClient
             string reportsPath = Constants.ExcelReportsPath;
             string excelReportName = Constants.ExcelReportName;
 
+            excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+
             try
             {
-                excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+               
             }
             catch (Exception)
             {

@@ -54,7 +54,7 @@ namespace Dealership.ExcelReportGenerator
 
                 CreateReport(pathToSave, excelReportName);
 
-                Console.WriteLine("Excel Report file successfully created.");
+                Console.WriteLine("Excel Report file created successfully.");
             }
         }
 
