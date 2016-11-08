@@ -173,6 +173,10 @@
       <Project>{62207070-de20-4bbb-9f3c-fd3cd82c3eb9}</Project>
       <Name>Dealership.ExcelFilesProcessing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dealership.ExcelReportGenerator\Dealership.ExcelReportGenerator.csproj">
+      <Project>{d6610ae8-01a9-4328-8eb9-8072b8466b67}</Project>
+      <Name>Dealership.ExcelReportGenerator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dealership.JsonReporter\Dealership.JsonReporter.csproj">
       <Project>{650b11cf-bfb4-45ef-b485-25eb55a706d6}</Project>
       <Name>Dealership.JsonReporter</Name>
@@ -192,6 +196,10 @@
     <ProjectReference Include="..\Dealership.Reports.Models\Dealership.Reports.csproj">
       <Project>{d77c6761-58bf-416e-9064-4de2aa6ffe5c}</Project>
       <Name>Dealership.Reports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.SQLite\Dealership.SQLite.csproj">
+      <Project>{23e00475-39fb-4cd3-974f-505d0f326d18}</Project>
+      <Name>Dealership.SQLite</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dealership.XmlFilesProcessing\Dealership.XmlFilesProcessing.csproj">
       <Project>{53dd272d-d0d0-4845-afde-80d2bc6b2c44}</Project>
