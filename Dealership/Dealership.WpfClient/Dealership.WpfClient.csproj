@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dealership.WpfClient</RootNamespace>
     <AssemblyName>Dealership.WpfClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -17,6 +17,7 @@
     <EnhancerAssembly>$(SolutionDir)\packages\Telerik.DataAccess.Fluent.2016.2.822.1\tools\enhancer\enhancer.exe</EnhancerAssembly>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -196,10 +197,6 @@
     <ProjectReference Include="..\Dealership.Reports.Models\Dealership.Reports.csproj">
       <Project>{d77c6761-58bf-416e-9064-4de2aa6ffe5c}</Project>
       <Name>Dealership.Reports</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dealership.SQLite\Dealership.SQLite.csproj">
-      <Project>{23e00475-39fb-4cd3-974f-505d0f326d18}</Project>
-      <Name>Dealership.SQLite</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dealership.XmlFilesProcessing\Dealership.XmlFilesProcessing.csproj">
       <Project>{53dd272d-d0d0-4845-afde-80d2bc6b2c44}</Project>
