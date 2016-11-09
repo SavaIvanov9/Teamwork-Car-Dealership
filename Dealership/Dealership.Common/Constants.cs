@@ -17,7 +17,7 @@
                                                 @"Data Source= {0};Extended Properties='Excel 12.0 Xml;HDR=YES;'";
 
         public const string ExcelReportName = @"excel-report.xlsx";
-        public const string ExcelReportsPath = @"../../../../Reports/Excel_Reports/";
+        public const string ExcelReportsPath = @"../../../../Reports/Excel-Reports/";
 
         public const string JsonReportsPath = "../../../../Reports/Json-Reports";
 
