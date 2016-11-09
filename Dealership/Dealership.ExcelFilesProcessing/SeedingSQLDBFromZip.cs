@@ -5,6 +5,7 @@ using Dealership.Models.Models.MongoDbSource;
 using Dealership.Models.Models.SalesReportSource;
 using Dealership.Models.Models.XmlSource;
 using Dealership.Reports.Models;
+using Dealership.Data;
 
 namespace Dealership.ExcelFilesProcessing
 {
@@ -64,6 +65,7 @@ namespace Dealership.ExcelFilesProcessing
 
             return true;
         }
+
         public void SeedSalesTable(ExcelSalesReport excelSalesReport)
         {
 
@@ -106,5 +108,67 @@ namespace Dealership.ExcelFilesProcessing
 
             this.data.SaveChanges();
         }
+
+        public void SeedSalesTable_alt(ExcelSalesReport excelSalesReport)
+        {
+            var employeeIdList = this.employees.All().Select(e => e.Id).ToList();
+            var VehicleIdAndModel = this.vehicles.All().Select(v => new { v.Id, v.Model }).ToList();
+            var ShopIdAndName = this.shops.All().Select(sh => new { sh.Id, sh.Name }).ToList();
+
+            var shop = ShopIdAndName.Where(s => s.Name.ToLower() == excelSalesReport.DistributorName.ToLower()).FirstOrDefault();
+
+            if (shop != null)
+            {
+                string formattedDateTime = String.Format("{0:yyyy/M/d HH:mm:ss}", excelSalesReport.DateOfSale);
+
+                using (var dealershipDbContext = new DealershipDbContext())
+                {
+                    var result = dealershipDbContext.Database.ExecuteSqlCommand($"DELETE FROM [Sales] WHERE ShopId={shop.Id} AND DateOfSale='{formattedDateTime}'");
+                }
+                int counter = 0;
+
+                foreach (var record in excelSalesReport.Records)
+                {
+                    var vehicle = VehicleIdAndModel.Where(v => v.Model.ToLower().Contains(record.VehicleModel.ToLower())).FirstOrDefault();
+                    if (employeeIdList.Exists(i => (i == record.EmployeeId))
+                        && vehicle != null)
+                    {
+                        Sale s = new Sale()
+                        {
+                            ShopId = shop.Id,
+                            VehicleId = vehicle.Id,
+                            EmployeeId = record.EmployeeId,
+                            Quantity = record.Quantity,
+                            Price = record.UnitPrice,
+                            DateOfSale = excelSalesReport.DateOfSale
+                        };
+
+                        this.sales.Add(s);
+                        counter++;
+
+                        //Console.Write(".");
+
+                        if (counter > maxRecordsPerLoad)
+                        {
+                            this.data.SaveChanges();
+                            counter = 0;
+                        }
+                    }
+                    else //null
+                    {
+                        Console.Write($"No such EmployeeId: {record.EmployeeId} or/and VehicleModel: {record.VehicleModel}");
+                    }
+                }
+
+
+                this.data.SaveChanges();
+            }
+            else //null
+            {
+                Console.Write($"No such DistributorName{excelSalesReport.DistributorName}");
+            }
+
+        }
+
     }
 }
