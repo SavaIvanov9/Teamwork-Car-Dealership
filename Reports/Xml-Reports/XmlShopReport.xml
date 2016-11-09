@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<shops>
+	<shop>
+		<name>South Pro Automotive</name>
+		<location>Horton Rd</location>
+		<total-transactions>4939800.00</total-transactions>
+	</shop>
+	<shop>
+		<name>Brunswick Auto</name>
+		<location>Lewisville Rd</location>
+		<total-transactions>4593000.00</total-transactions>
+	</shop>
+	<shop>
+		<name>North East Auto</name>
+		<location>Sackville Dr</location>
+		<total-transactions>4206100.00</total-transactions>
+	</shop>
+</shops>
