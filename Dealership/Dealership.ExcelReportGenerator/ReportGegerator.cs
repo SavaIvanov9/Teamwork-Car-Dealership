@@ -32,30 +32,18 @@ namespace Dealership.ExcelReportGenerator
         public ReportGenerator()
         {
             this.MySqlData = new DataAccessDbContext();
-            //this.SqliteData = new ItemExpensesDbEntities();
 
             this.SQLiteData = new GenericRepository<Item>(new ItemExpensesDbEntities());
         }
 
         public void GenerateExcelReport(string pathToSave, string excelReportName)
         {
-            Console.WriteLine("Generating Excel report...");
-
-            if (File.Exists(Path.Combine(pathToSave, excelReportName)))
+            if (!string.IsNullOrEmpty(excelReportName))
             {
-                Console.WriteLine("Excel report already exists.");
+                Utility.CreateDirectoryIfNotExists(pathToSave);
             }
-            else
-            {
-                if (!string.IsNullOrEmpty(excelReportName))
-                {
-                    Utility.CreateDirectoryIfNotExists(pathToSave);
-                }
 
-                CreateReport(pathToSave, excelReportName);
-
-                Console.WriteLine("Excel Report file created successfully.");
-            }
+            CreateReport(pathToSave, excelReportName);
         }
 
         private void CreateReport(string pathToSave, string excelReportName)
@@ -140,29 +128,10 @@ namespace Dealership.ExcelReportGenerator
 
         private string GetItemExpense(JsonReportEntry currentEntity)
         {
-            //if (this.SqliteData
-            //    .Items
-            //    .Select(x => x.Name)
-            //    .Contains(currentEntity.ProductName))
-            //{
-            //    var item = this.SqliteData
-            //    .Items
-            //    .Where(i => i.Name == currentEntity.ProductName)
-            //    .Select(i => new
-            //    {
-            //        Expense = i.Taxes
-            //    })
-            //    .First();
-
-            //    return item.Expense;
-            //}
-
-            //return "0%";
-
             if (this.SQLiteData
-                .GetAll()
-                .Select(x => x.Name)
-                .Contains(currentEntity.ProductName))
+                 .GetAll()
+                 .Select(x => x.Name)
+                 .Contains(currentEntity.ProductName))
             {
                 var item = this.SQLiteData
                 .GetAll(i => i.Name == currentEntity.ProductName)

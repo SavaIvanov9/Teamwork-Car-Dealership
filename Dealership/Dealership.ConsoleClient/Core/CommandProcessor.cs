@@ -162,13 +162,23 @@
             string reportsPath = Constants.ExcelReportsPath;
             string excelReportName = Constants.ExcelReportName;
 
-            try
+            textWriter.WriteLine("Generating Excel report...");
+
+            if (File.Exists(Path.Combine(reportsPath, excelReportName)))
             {
-                excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+                textWriter.WriteLine("Excel report already exists.");
             }
-            catch (Exception)
+            else
             {
-                textWriter.WriteLine("Error occured. Cannot create Excel report...");
+                try
+                {
+                    excelReportGenerator.GenerateExcelReport(reportsPath, excelReportName);
+                    textWriter.WriteLine("Excel Report file created successfully!");
+                }
+                catch (Exception)
+                {
+                    textWriter.WriteLine("Error occured. Cannot create Excel report...");
+                }
             }
         }
 

@@ -1,4 +1,6 @@
-﻿namespace Dealership.ConsoleClient.Core
+﻿using System.Collections.Generic;
+
+namespace Dealership.ConsoleClient.Core
 {
     using System.IO;
 
@@ -18,14 +20,22 @@
 
         public void Start()
         {
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.SeedDataFromMongo);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.SeedDataFromXml);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.SeedDataFromSalesReports);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.GenerateJsonReports);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.GenerateExcelReport);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.GenerateXmlShopReport);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.GenerateXmlDailyShopReport);
-            CommandProcessor.Create(textWriter).ExecuteCommand(Command.GenerateRdfAggregateDailySalesReport);
+            var commands = new List<Command>
+            {
+                Command.SeedDataFromMongo,
+                Command.SeedDataFromXml,
+                Command.SeedDataFromSalesReports,
+                Command.GenerateJsonReports,
+                Command.GenerateExcelReport,
+                Command.GenerateXmlShopReport,
+                Command.GenerateXmlDailyShopReport,
+                Command.GenerateRdfAggregateDailySalesReport
+            };
+
+            foreach (var command in commands)
+            {
+                CommandProcessor.Create(textWriter).ExecuteCommand(command);
+            }
         }
     }
 }
